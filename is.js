@@ -20,7 +20,7 @@ is.arr = function(n) {
     return Array.isArray(n) ? true : false
 }
 is.obj = function(n) {
-    return typeof n == 'object' ? true : false
+    return typeof n === 'object' && n != null ? true : false
 }
 is.fun = function(n) {
     return n instanceof Function ? true : false
@@ -31,3 +31,5 @@ is.truthy = function(n) {
 is.falsy = function(n) {
     return !n ? true : false
 }
+
+console.log(is.f())
