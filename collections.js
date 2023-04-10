@@ -44,7 +44,7 @@ function strToObj(str) {
 
 function superTypeOf(n) {
     if (n === null) return 'null'
-    if (typeof n != 'object') return typeof n
+    if (typeof n != 'object') return capitalize(typeof n)
     else {
         if (n instanceof Map) return 'Map'
         if (n instanceof Set) return 'Set'
@@ -52,6 +52,10 @@ function superTypeOf(n) {
         if (n instanceof Function) return 'Function'
         if (n instanceof Object) return 'Object'
     }
+}
+
+function capitalize(s) {
+    return s[0].toUpperCase() + s.substr(1, s.length - 1).toLowerCase()
 }
 
 const str = 'hello'
@@ -77,4 +81,4 @@ console.log(superTypeOf(NaN)) //         -> 'Number'
 console.log(superTypeOf(arr)) //         -> 'Array'
 console.log(superTypeOf(null)) //        -> 'null'
 console.log(superTypeOf(undefined)) //   -> 'undefined'
-console.log(superTypeOf(superTypeOf)) // -> 'Function'
+console.log(superTypeOf('')) // -> 'Function'
