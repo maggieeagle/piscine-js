@@ -20,7 +20,7 @@ is.arr = function(n) {
     return Array.isArray(n) ? true : false
 }
 is.obj = function(n) {
-    return typeof n === 'object' && n != null ? true : false
+    return typeof n === 'object' && !is.arr(n) && n != null ? true : false
 }
 is.fun = function(n) {
     return n instanceof Function ? true : false
