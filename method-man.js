@@ -14,7 +14,7 @@ function whisper(s) {
     return '*' + s.toLowerCase() + '*'
 }
 
-function capitilize(s) {
+function capitalize(s) {
     return s[0].toUpperCase() + s.substr(1, s.length - 1)
 }
 
@@ -22,4 +22,4 @@ console.log(words("Hello world !"))
 console.log(sentence(['Hello', 'world', '!']))
 console.log(yell("Hello world !"))
 console.log(whisper("Hello world !"))
-console.log(capitilize("hello world !"))
+console.log(capitalize('str'))
