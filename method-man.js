@@ -15,7 +15,7 @@ function whisper(s) {
 }
 
 function capitalize(s) {
-    return s[0].toUpperCase() + s.substr(1, s.length - 1)
+    return s[0].toUpperCase() + s.substr(1, s.length - 1).toLowerCase()
 }
 
 console.log(words("Hello world !"))
