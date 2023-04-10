@@ -1,10 +1,8 @@
-const is = {}
-
 is.num = function(n) {
     return typeof n == 'number' ? true : false
 }
 is.nan = function(n) {
-    return isNaN(n) ? true : false
+    return Number.isNaN(n) ? true : false
 }
 is.str = function(n) {
     return typeof n == 'string' ? true : false
