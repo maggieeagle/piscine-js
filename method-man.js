@@ -3,7 +3,7 @@ function words(s) {
 }
 
 function sentence(arr){
-    return arr.join()
+    return arr.join(' ')
 }
 
 function yell(s){
