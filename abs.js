@@ -7,7 +7,7 @@ function isPositive(n) {
 
 function abs(n) {
     if (!isPositive) {
-        return n + 2*n
+        return -n
     }
     return n
 }
