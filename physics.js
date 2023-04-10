@@ -1,6 +1,6 @@
 function getAcceleration(o) {
-    if (o.F != null && o.m != null) {
-        return o.F/o.m
+    if (o.f != null && o.m != null) {
+        return o.f/o.m
     }
     if (o.Δv != null && o.Δt != null) {
         return o.Δv/o.Δt
