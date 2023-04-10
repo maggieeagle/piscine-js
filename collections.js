@@ -44,7 +44,10 @@ function strToObj(str) {
 
 function superTypeOf(n) {
     if (n === null) return 'null'
-    if (typeof n != 'object') return capitalize(typeof n)
+    if (typeof n != 'object') {
+        if (typeof n == 'undefined') return 'undefined'
+        return capitalize(typeof n)
+    }
     else {
         if (n instanceof Map) return 'Map'
         if (n instanceof Set) return 'Set'
