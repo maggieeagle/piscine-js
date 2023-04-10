@@ -5,5 +5,5 @@ function sign(n) {
 }
 
 function sameSign(a, b) {
-    return sign(a*b)==1 ? true : false
+    return sign(a*b)==1 || sign(a*b)==0 ? true : false
 }
