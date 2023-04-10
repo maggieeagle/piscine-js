@@ -33,7 +33,3 @@ is.truthy = function(n) {
 is.falsy = function(n) {
     return !n ? true : false
 }
-
-function bla() {}
-
-console.log(is.fun(bla))
