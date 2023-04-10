@@ -4,7 +4,7 @@ is.num = function(n) {
     return typeof n == 'number' ? true : false
 }
 is.nan = function(n) {
-    return typeof n != 'number' ? true : false
+    return isNaN(n) ? true : false
 }
 is.str = function(n) {
     return typeof n == 'string' ? true : false
@@ -33,3 +33,7 @@ is.truthy = function(n) {
 is.falsy = function(n) {
     return !n ? true : false
 }
+
+function bla() {}
+
+console.log(is.fun(bla))
