@@ -6,11 +6,11 @@ function split(s, sep) {
             isSep += s[j]
         }
         if (isSep == sep) {
-            for (let j = prev + 1; j < i - sep.length + 1; j++) {
-                word += s[j]
-            }
+            // for (let j = prev + 1; j < i - sep.length + 1; j++) {
+            //     word += s[j]
+            // }
+            res.push(s.slice(prev, i-sep.length))
             prev = i
-            res.push(word)
             word = ''
             i += sep.length-1
         }
