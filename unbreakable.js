@@ -7,13 +7,13 @@ function split(s, sep) {
             // console.log('next!', next)
             // console.log('s.length-1!', s.length-1)
             // console.log("slice", s.slice(next+1, s.length))
-            res.push(s.slice(next+sep.length, s.length))
+            res.push(s.slice(next + sep.length, s.length))
             break;
         }
         next = tmp
         // console.log("previous", prev)
         // console.log("next", next)
-        res.push(s.slice(prev + sep.length-1, next))
+        res.push(s.slice(prev == 0 ? 0 : prev + sep.length-1, next))
         prev = next + 1
         // let isSep = s.slice(i - sep.length + 1, i + 1)
         // console.log("sep", isSep)
