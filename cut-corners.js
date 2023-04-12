@@ -17,5 +17,5 @@ function trunc(n) {
 function ceil(n0) {
     let i = 0, n = Math.abs(n0)
     for (; i < n; i++) {}
-    return Math.sign(n0) < 1 ? -i+1 : i
+    return Math.sign(n0) < 0 ? -i+1 : i
 }
