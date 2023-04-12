@@ -18,7 +18,7 @@ function divide(a0, b0) {
 }
 
 function modulo(a, b) {
-    return Math.abs(a-multiply(b, divide(a, b)))
+    return a-multiply(b, divide(a, b))
 }
 
-console.log(multiply(34, 78))
+console.log(modulo(-123, 22))
