@@ -21,12 +21,6 @@ function floor(n0) {
 function trunc(n) {
     return Math.sign(n) < 0 ? ceil(n) : floor(n)
 }
-function ceil(n0) {
-    let i = 0, n = Math.abs(n0), sign = Math.sign(n0)
-    if (n == Infinity) return n0
-    for (; i < n; i++) { }
-    if (-i == n0) return n
-    return sign < 1 ? (-i + 1 != 0 ? -i + 1 : sign * 0) : i
+function ceil(n) {
+    return -floor(-n)
 }
-
-
