@@ -19,9 +19,3 @@ function ceil(n0) {
     for (; i < n; i++) {}
     return Math.sign(n0) < 1 ? -i+1 : i
 }
-
-const nums = [3.7, -3.7, 3.1, -3.1]
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))
