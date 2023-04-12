@@ -37,10 +37,10 @@ function join(arr, sep) {
     return res
 }
 
-console.log(split('ggg - ddd - b', ' - '))
-console.log(split('a b c', ' '))
-console.log(split('ee,ff,g,', ','))
-console.log(split('Riad', ' '))
-console.log(split('rrrr', 'rr'))
-console.log(split('rrirr', 'rr'))
+// console.log(split('ggg - ddd - b', ' - '))
+// console.log(split('a b c', ' '))
+// console.log(split('ee,ff,g,', ','))
+// console.log(split('Riad', ' '))
+// console.log(split('rrrr', 'rr'))
+// console.log(split('rrirr', 'rr'))
 // console.log(join(['Fire', 'Air', 'Water'], ''))
