@@ -19,3 +19,4 @@ function ceil(n0) {
     for (; i < n; i++) {}
     return Math.sign(n0) < 0 ? -i+1 : i
 }
+console.log()
