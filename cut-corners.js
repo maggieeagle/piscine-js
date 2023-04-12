@@ -2,7 +2,7 @@ function round(n) {
     let i = 0, sign = Math.sign(n)
     if (Number.isInteger(n)) return n
     if (n == Number.POSITIVE_INFINITY || n == Number.NEGATIVE_INFINITY || Number.isNaN(n)) return n
-    if (n >= Number.MAX_VALUE || n <= Number.MIN_VALUE) return n
+    if (n >= Number.MAX_VALUE || n <= -Number.MAX_VALUE) return n
     if (sign >= 0) {
         while (i < n) {
             if(n - i > 10000000000) i+=10000000000
@@ -23,7 +23,7 @@ function floor(n0) {
     let i = 0, n = Math.abs(n0), sign = Math.sign(n0)
     if (Number.isInteger(n)) return n
     if (n0 == Number.POSITIVE_INFINITY || n0 == Number.NEGATIVE_INFINITY  || Number.isNaN(n0)) return n0
-    if (n0 >= MAX_VALUE || n0 <= MIN_VALUE) return n0
+    if (n0 >= MAX_VALUE || n0 <= -MAX_VALUE) return n0
     while (i < n) {
         if(n - i > 10000000000) i+=10000000000
         else if(n-i > 100000000) i += 100000000
@@ -43,7 +43,7 @@ function ceil(n0) {
     let i = 0, n = Math.abs(n0), sign = Math.sign(n0)
     if (Number.isInteger(n)) return n
     if (n0 == Number.POSITIVE_INFINITY || n0 == Number.NEGATIVE_INFINITY  || Number.isNaN(n0)) return n0
-    if (n0 >= Number.MAX_VALUE || n0 <= Number.MIN_VALUE) return n0
+    if (n0 >= Number.MAX_VALUE || n0 <= -Number.MAX_VALUE) return n0
     while (i < n) {
         if(n - i > 10000000000) i+=10000000000
         else if(n-i > 100000000) i += 100000000
