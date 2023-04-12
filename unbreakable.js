@@ -1,30 +1,15 @@
 function split(s, sep) {
     let res = [], prev = 0, next = 0
     while(next + sep.length <= s.length) {
-        let tmp = s.indexOf(sep, prev)
-        // console.log("tmp", tmp)
-        if (tmp == -1) {
-            // console.log('next!', next)
-            // console.log('s.length-1!', s.length-1)
-            // console.log("slice", s.slice(next+1, s.length))
+        // let tmp = s.indexOf(sep, prev)
+        if (s.indexOf(sep, prev) == -1) {
             res.push(s.slice(next == 0 ? 0 : prev, s.length))
             break;
         }
-        next = tmp
-        // console.log("previous", prev)
-        // console.log("next", next)
-        let slice = s.slice(prev == 0 ? 0 : prev, next)
-        res.push(slice)
+        next = s.indexOf(sep, prev)
+        res.push(s.slice(prev == 0 ? 0 : prev, next))
         prev = next + sep.length
-        // let isSep = s.slice(i - sep.length + 1, i + 1)
-        // console.log("sep", isSep)
-        // if (isSep == sep) {
-        //     res.push(s.slice(prev+1, i - sep.length + 1))
-        //     prev = i
-        //     i += sep.length - 1
-        // }
     }
-    // res.push(s.slice(prev+1, s.length + 1))
     return res
 }
 
