@@ -13,7 +13,6 @@ function floor(n0) {
 function trunc(n) {
     return Math.sign(n) < 0 ? ceil(n) : floor(n)
 }
-
 function ceil(n0) {
     let i = 0, n = Math.abs(n0)
     for (; i < n; i++) {}
