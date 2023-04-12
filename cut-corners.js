@@ -22,7 +22,8 @@ function floor(n0) {
 function trunc(n) {
     return Math.sign(n) < 0 ? ceil(n) : floor(n)
 }
-function ceil(n) {
+
+function ceil(n0) {
     let i = 0, n = Math.abs(n0), sign = Math.sign(n0)
     if (n == Infinity) return n0
     if (Number.isInteger(n)) return n
@@ -30,3 +31,5 @@ function ceil(n) {
     if (-i == n0) return n
     return sign < 1 ? (-i + 1 != 0 ? -i + 1 : sign * 0) : i
 }
+
+console.log(ceil(0.2))
