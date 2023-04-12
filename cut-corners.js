@@ -28,3 +28,4 @@ function ceil(n0) {
     if (-i == n0) return n
     return sign < 1 ? (-i+1 != 0 ? -i+1 : sign * 0) : i
 }
+
