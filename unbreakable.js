@@ -1,5 +1,5 @@
 function split(s, sep) {
-    let res = [], prev = 0
+    let res = [], prev = -1
     for (let i = 0; i < s.length; i++) {
         let isSep = s.slice(i - sep.length + 1, i + 1)
         console.log("sep", isSep)
@@ -7,7 +7,7 @@ function split(s, sep) {
             // for (let j = prev + 1; j < i - sep.length + 1; j++) {
             //     word += s[j]
             // }
-            res.push(s.slice(prev, i - sep.length + 1))
+            res.push(s.slice(prev+1, i - sep.length + 1))
             prev = i
             i += sep.length - 1
         }
@@ -15,7 +15,7 @@ function split(s, sep) {
     // for (let j = prev + 1; j < s.length; j++) {
     //     word += s[j]
     // }
-    res.push(s.slice(prev, s.length + 1))
+    res.push(s.slice(prev+1, s.length + 1))
     return res
 }
 
@@ -28,5 +28,5 @@ function join(arr, sep) {
     return res
 }
 
-console.log(split('a b c', ' '))
-console.log(join(['Fire', 'Air', 'Water'], ''))
+// console.log(split('a b c', ' '))
+// console.log(join(['Fire', 'Air', 'Water'], ''))
