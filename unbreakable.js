@@ -10,7 +10,7 @@ function split(s, sep) {
                 word += s[j]
             }
             prev = i
-            if (word != '') res.push(word)
+            res.push(word)
             word = ''
         }
     }
