@@ -1,6 +1,6 @@
 function split(s, sep) {
     let res = [], prev = 0, next = 0
-    while(next + sep.length < s.length) {
+    while(next + sep.length <= s.length) {
         let tmp = s.indexOf(sep, prev)
         // console.log("tmp", tmp)
         if (tmp == -1) {
@@ -38,4 +38,5 @@ function join(arr, sep) {
 
 console.log(split('ggg - ddd - b', ' - '))
 console.log(split('a b c', ' '))
+console.log(split('ee,ff,g,', ','))
 // console.log(join(['Fire', 'Air', 'Water'], ''))
