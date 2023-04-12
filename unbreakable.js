@@ -7,7 +7,7 @@ function split(s, sep) {
             // console.log('next!', next)
             // console.log('s.length-1!', s.length-1)
             // console.log("slice", s.slice(next+1, s.length))
-            res.push(s.slice(next+sep.length-1, s.length))
+            res.push(s.slice(next+sep.length, s.length))
             break;
         }
         next = tmp
@@ -37,4 +37,5 @@ function join(arr, sep) {
 }
 
 console.log(split('ggg - ddd - b', ' - '))
+console.log(split('a b c', ' '))
 // console.log(join(['Fire', 'Air', 'Water'], ''))
