@@ -4,7 +4,7 @@ function multiply(a, b) {
     for (let i=0; i < Math.abs(b); i++) {
         res += Math.abs(a)
     }
-    return (sign < 0 && res != 0 ? "-" : "") + res
+    return Number((sign < 0 && res != 0 ? "-" : "") + res)
 }
 
 function devide(a0, b0) {
@@ -14,9 +14,11 @@ function devide(a0, b0) {
     for (;a >= b;a-=b) {
         res += 1
     }
-    return (sign < 0 && res != 0 ? "-" : "") + res
+    return Number((sign < 0 && res != 0 ? "-" : "") + res)
 }
 
 function modulo(a, b) {
     return Math.abs(a-multiply(b, devide(a, b)))
 }
+
+console.log(multiply(34, 78))
