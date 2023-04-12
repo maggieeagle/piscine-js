@@ -7,7 +7,7 @@ function multiply(a, b) {
     return Number((sign < 0 && res != 0 ? "-" : "") + res)
 }
 
-function devide(a0, b0) {
+function divide(a0, b0) {
     let a = Math.abs(a0), b = Math.abs(b0)
     let sign = Math.abs(Math.sign(a0) + Math.sign(b0)) - 1
     let res = 0
@@ -18,7 +18,7 @@ function devide(a0, b0) {
 }
 
 function modulo(a, b) {
-    return Math.abs(a-multiply(b, devide(a, b)))
+    return Math.abs(a-multiply(b, divide(a, b)))
 }
 
 console.log(multiply(34, 78))
