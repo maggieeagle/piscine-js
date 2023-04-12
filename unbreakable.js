@@ -1,5 +1,6 @@
 function split(s, sep) {
     let res = []
+    if (s == '') return ['']
     if (!(sep == null || sep == '')) {
         let prev = 0, next = 0
         while(next + sep.length <= s.length) {
@@ -36,4 +37,5 @@ console.log(split('Riad', ' '))
 console.log(split('rrrr', 'rr'))
 console.log(split('rrirr', 'rr'))
 console.log(split('hello', ''))
+console.log(split('', 'Riad'))
 console.log(join(['Fire', 'Air', 'Water'], '-'))
