@@ -1,21 +1,29 @@
 function split(s, sep) {
-    let res = [], prev = -1
-    for (let i = 0; i < s.length; i++) {
-        let isSep = s.slice(i - sep.length + 1, i + 1)
-        console.log("sep", isSep)
-        if (isSep == sep) {
-            // for (let j = prev + 1; j < i - sep.length + 1; j++) {
-            //     word += s[j]
-            // }
-            res.push(s.slice(prev+1, i - sep.length + 1))
-            prev = i
-            i += sep.length - 1
+    let res = [], prev = 0, next = 0
+    while(next + sep.length < s.length) {
+        let tmp = s.indexOf(sep, prev)
+        // console.log("tmp", tmp)
+        if (tmp == -1) {
+            // console.log('next!', next)
+            // console.log('s.length-1!', s.length-1)
+            // console.log("slice", s.slice(next+1, s.length))
+            res.push(s.slice(next+1, s.length))
+            break;
         }
+        next = tmp
+        // console.log("previous", prev)
+        // console.log("next", next)
+        res.push(s.slice(prev, next))
+        prev = next + 1
+        // let isSep = s.slice(i - sep.length + 1, i + 1)
+        // console.log("sep", isSep)
+        // if (isSep == sep) {
+        //     res.push(s.slice(prev+1, i - sep.length + 1))
+        //     prev = i
+        //     i += sep.length - 1
+        // }
     }
-    // for (let j = prev + 1; j < s.length; j++) {
-    //     word += s[j]
-    // }
-    res.push(s.slice(prev+1, s.length + 1))
+    // res.push(s.slice(prev+1, s.length + 1))
     return res
 }
 
@@ -28,5 +36,5 @@ function join(arr, sep) {
     return res
 }
 
-// console.log(split('a b c', ' '))
+console.log(split('a b c', ' '))
 // console.log(join(['Fire', 'Air', 'Water'], ''))
