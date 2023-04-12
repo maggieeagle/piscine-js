@@ -2,7 +2,7 @@ function round(n) {
     let i = 0, sign = Math.sign(n)
     if (Number.isInteger(n)) return n
     if (n == Number.POSITIVE_INFINITY || n == Number.NEGATIVE_INFINITY || Number.isNaN(n)) return n
-    if (n >= Number.MAX_SAFE_INTEGER || n <= Number.MIN_SAFE_INTEGER) return n
+    if (n >= 0xfffffffff || n <= -0xfffffffff) return n
     if (sign >= 0) {
         for (; i < n; i++) { }
         return i - n > n - i + 1 ? i - 1 : i
@@ -16,7 +16,7 @@ function floor(n0) {
     let i = 0, n = Math.abs(n0), sign = Math.sign(n0)
     if (Number.isInteger(n)) return n
     if (n0 == Number.POSITIVE_INFINITY || n0 == Number.NEGATIVE_INFINITY  || Number.isNaN(n0)) return n0
-    if (n0 >= Number.MAX_SAFE_INTEGER || n0 <= Number.MIN_SAFE_INTEGER) return n0
+    if (n0 >= 0xfffffffff || n0 <= -0xfffffffff) return n0
     for (; i < n; i++) { }
     return sign < 1 ? (i != 0 ? -i : sign * 0) : i - 1
 }
@@ -29,7 +29,7 @@ function ceil(n0) {
     let i = 0, n = Math.abs(n0), sign = Math.sign(n0)
     if (Number.isInteger(n)) return n
     if (n0 == Number.POSITIVE_INFINITY || n0 == Number.NEGATIVE_INFINITY  || Number.isNaN(n0)) return n0
-    if (n0 >= Number.MAX_SAFE_INTEGER || n0 <= Number.MIN_SAFE_INTEGER) return n0
+    if (n0 >= 0xfffffffff || n0 <= -0xfffffffff) return n0
     for (; i < n; i++) { }
     if (-i == n0) return n
     return sign < 1 ? (-i + 1 != 0 ? -i + 1 : sign * 0) : i
