@@ -22,6 +22,6 @@ function trunc(n) {
     return Math.sign(n) < 0 ? ceil(n) : floor(n)
 }
 function ceil(n) {
-    res = -floor(-n)
+    let res = -floor(-n)
     return res == 0 ? Math.sign(n) * res : res
 }
