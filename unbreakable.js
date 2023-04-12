@@ -1,13 +1,14 @@
 function split(s, sep) {
     let res = [], prev = 0, next = 0
     while(next + sep.length <= s.length) {
-        // let tmp = s.indexOf(sep, prev)
-        if (s.indexOf(sep, prev) == -1) {
-            res.push(s.slice(next == 0 ? 0 : prev, s.length))
+        let tmp = s.indexOf(sep, prev)
+        if (tmp == -1) {
+            res.push(s.substring(next == 0 ? 0 : prev, s.length))
             break;
         }
-        next = s.indexOf(sep, prev)
-        res.push(s.slice(prev == 0 ? 0 : prev, next))
+        next = tmp
+        let slice = s.substring(prev == 0 ? 0 : prev, next)
+        res.push(slice)
         prev = next + sep.length
     }
     return res
