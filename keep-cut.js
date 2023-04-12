@@ -19,5 +19,7 @@ function keepLast(s) {
 }
 
 function keepFirstLast(s) {
-    return keepFirst(s) + keepLast(s)
+    return keepFirst(s) + keepLast(cutFirst(s))
 }
+
+console.log(keepFirstLast("af"))
