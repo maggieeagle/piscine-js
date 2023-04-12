@@ -13,7 +13,8 @@ function split(s, sep) {
         next = tmp
         // console.log("previous", prev)
         // console.log("next", next)
-        res.push(s.slice(prev == 0 ? 0 : prev + sep.length-1, next))
+        let slice = s.slice(prev == 0 ? 0 : prev + sep.length-1, next)
+        if (!(slice == '' && prev == 0)) res.push(slice)
         prev = next + 1
         // let isSep = s.slice(i - sep.length + 1, i + 1)
         // console.log("sep", isSep)
@@ -40,4 +41,5 @@ console.log(split('ggg - ddd - b', ' - '))
 console.log(split('a b c', ' '))
 console.log(split('ee,ff,g,', ','))
 console.log(split('Riad', ' '))
+console.log(split('rrrr', 'rr'))
 // console.log(join(['Fire', 'Air', 'Water'], ''))
