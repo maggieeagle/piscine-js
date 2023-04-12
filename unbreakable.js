@@ -10,8 +10,9 @@ function split(s, sep) {
                 word += s[j]
             }
             prev = i
-            if (word != '') res.push(word)
+            res.push(word)
             word = ''
+            i += sep.length-1
         }
     }
     for (let j = prev + 1; j < s.length; j++) {
