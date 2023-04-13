@@ -1,4 +1,5 @@
 function sums(n) {
+    if (n == 0) return []
     let res = [], p = []
     for (let i = 0; i < n; i++) {
         p.push(1)
@@ -44,4 +45,4 @@ function partition(n, len) {
     return res
 }
 
-console.log(sums(4))
+console.log(sums(0))
