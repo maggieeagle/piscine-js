@@ -1,6 +1,7 @@
 function nasa(N) {
     let res = ''
     for (let i = 1; i <= N; i++) {
+        if (i != 1) res += ' '
         if (i % 5 == 0 && i % 3 == 0) {
             res += 'NASA'
             continue;
