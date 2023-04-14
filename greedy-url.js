@@ -1,5 +1,5 @@
 function getURL(dataSet) {
-    let re = /https?:\/\/\w+\.[\w|\.]*\/[\w|?|=|&]*/g
+    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){0,}/g
     return dataSet.match(re) == null ? [] : dataSet.match(re)
 }
 
