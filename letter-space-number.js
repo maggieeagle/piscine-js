@@ -1,6 +1,6 @@
 function letterSpaceNumber(s) {
     const re = /\w \d\b/g
-    return s.match(re)
+    return s.match(re) == null ? [] : s.match(re)
 }
 
-console.log(letterSpaceNumber('example 1, example 20'))
+console.log(letterSpaceNumber('I like 7up.'))
