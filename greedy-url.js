@@ -9,7 +9,7 @@ function greedyQuery(dataSet) {
 }
 
 function notSoGreedy(dataSet) {
-    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){2,3}/g
+    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){1,2}/g
     return dataSet.match(re) == null ? [] : dataSet.match(re)
     
 }
