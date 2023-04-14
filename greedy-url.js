@@ -9,12 +9,11 @@ function greedyQuery(dataSet) {
 }
 
 function notSoGreedy(dataSet) {
-    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){1,2}\b/g
-    return dataSet.match(re) == null ? [] : dataSet.match(re)
-    
+    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){1,}\b/g
+    let match = dataSet.match(re), res = []
+    match.forEach(url => {
+        let r = /\&[\w|=|?|,|[|\]|%|\-]*/g
+        if (url.match(r).length<=2) res.push(url)
+    });
+    return res == null ? [] : res
 }
-
-const s = 'qqq http:// qqqq q qqqqq https://something.com/hello qqqqqqq qhttp://example.com/hello?you=something&something=you'
-const s1 = 'jfbvjdhf'
-console.log(getURL(s))
-console.log(getURL(s1))
