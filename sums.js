@@ -1,50 +1,35 @@
-function sums(n) {
-    if (n == 0 || n == 1) return []
-    let res = [], p = []
-    for (let i = 0; i < n; i++) {
-        p.push(1)
+function sums(n, notfirst) {
+    if (n == 0) return []
+    if (n == 1) {
+        if (notfirst == null) return []
+        else return [[1]]
     }
-    res.push([p])
+    let sum = sums(n-1, true), res = []
+    // if (sum.length == 0) sum.push([1])
+    for (let j = 0; j < sum.length; j++){
+        let tmp =  structuredClone(sum[j])
+        // console.log('sum[j]', tmp)
+        tmp.push(1)
+        tmp.sort()
+        // console.log('sum[j] after push', tmp)
+        if (isUnique(res, tmp)) res.push(tmp)
+        // console.log('res after push', res)
+        for (let i = 0; i < sum[j].length; i++) {
+            let tmp = structuredClone(sum[j])
+            tmp[i] += 1
+            tmp.sort()
+            if (tmp[0] != n && isUnique(res, tmp)) res.push(tmp)
+        }
+    }
     
-    for (let i = n-1; i >= 2; i--) {
-        res.push(partition(n, i))
-    }
-    let result = res.flat().sort(function(a, b) {
-        return a[0] - b[0];
-      });
-    return result
+    return res.sort()
 }
 
-function partition(n, len) {
-    let part = [], res = []
-
-    part.push(n - len + 1)
-    for (let i = 0; i < len - 1; i++) {
-        part.push(1)
+function isUnique(res, tmp) {
+    for (let i = 0; i < res.length; i++) {
+        if (res[i].toString() == tmp.toString()) return false 
     }
-    res.push(structuredClone(part).reverse())
-
-    // console.log('start', part)
-    let flag = true
-    while (part[0] > part[1] && flag) {
-        flag = false
-        for (let i = 1; i < part.length; i++) {
-            n = part[i] + 1
-            let compare = i == 1 || i == part.length - 1 ? part[0] - 1 : part[i - 1]
-            if (i < part.length - 1 && n >= part[i + 1] && n <= compare && part[0]-1 > part[1] ||
-                i == part.length - 1 && n <= part[i-1] && compare >= part[1] && part[0]-1 > part[1]) {
-                part[i] += 1
-                part[0] -= 1
-                res.push(structuredClone(part).reverse())
-                // console.log(part)
-                flag = true
-                break;
-            }
-        }
-        // console.log('finish')
-    }
-    // console.log(res)
-    return res
+    return true
 }
 
 console.log(sums(4))
