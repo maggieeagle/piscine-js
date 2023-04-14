@@ -1,7 +1,7 @@
 function findIP(s) {
     let re = /([123456789]{1}\d{0,2})\.([123456789]{1}\d{0,2})\.([123456789]{1}\d{0,2})\.([123456789]{1}\d{0,2})(:(\d*))?/g
     let matches = s.match(re), res = []
-    if (matches.length == 0) return []
+    if (matches == null) return []
     for (let i = 0; i < matches.length; i++) {
         const match = matches[i];
         // console.log('match', match)
