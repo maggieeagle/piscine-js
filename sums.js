@@ -9,8 +9,10 @@ function sums(n) {
     for (let i = n-1; i >= 2; i--) {
         res.push(partition(n, i))
     }
-
-    return res.flat()
+    let result = res.flat().sort(function(a, b) {
+        return a[0] - b[0];
+      });
+    return result
 }
 
 function partition(n, len) {
@@ -28,9 +30,9 @@ function partition(n, len) {
         flag = false
         for (let i = 1; i < part.length; i++) {
             n = part[i] + 1
-            let compare = i == 1 ? part[0] - 1 : part[i - 1]
-            if (i < part.length - 1 && n >= part[i + 1] && n <= compare && n - part[i + 1] <= compare - n + 1 ||
-                i == part.length - 1 && n <= part[i-1] && compare >= part[1]) {
+            let compare = i == 1 || i == part.length - 1 ? part[0] - 1 : part[i - 1]
+            if (i < part.length - 1 && n >= part[i + 1] && n <= compare && part[0]-1 > part[1] ||
+                i == part.length - 1 && n <= part[i-1] && compare >= part[1] && part[0]-1 > part[1]) {
                 part[i] += 1
                 part[0] -= 1
                 res.push(structuredClone(part).reverse())
@@ -45,4 +47,4 @@ function partition(n, len) {
     return res
 }
 
-console.log(sums(1))
+console.log(sums(4))
