@@ -4,12 +4,12 @@ function getURL(dataSet) {
 }
 
 function greedyQuery(dataSet) {
-    let re = /https?:\/\/\w+\.[\w|\.]*\/\w*\?[\w|=]*(\&[\w|=]*){2,}/g
+    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){2,}/g
     return dataSet.match(re) == null ? [] : dataSet.match(re)
 }
 
 function notSoGreedy(dataSet) {
-    let re = /https?:\/\/\w+\.[\w|\.]*\/\w*\?[\w|=]*(\&[\w|=]*){2,3}/g
+    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){2,3}/g
     return dataSet.match(re) == null ? [] : dataSet.match(re)
     
 }
