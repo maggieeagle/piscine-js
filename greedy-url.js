@@ -9,7 +9,7 @@ function greedyQuery(dataSet) {
 }
 
 function notSoGreedy(dataSet) {
-    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){1,}\b/g
+    let re = /https?:\/\/[\w|\-|\d]+(\.[\w|\.|\d]*){0,}[\w|\/|@|\.|\-]*(\?[\w|=|\#|\.]*)?(\&[\w|=|?|,|[|\]|%|\-]*){1,}/g
     let match = dataSet.match(re), res = []
     match.forEach(url => {
         let r = /\&[\w|=|?|,|[|\]|%|\-]*/g
