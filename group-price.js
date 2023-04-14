@@ -2,7 +2,7 @@ function groupPrice(s) {
     let re = /(?<=\s)[a-zA-Z|$]+[\d]+(\.([\d]*))?/g
     let matches = s.match(re), res = []
     matches.forEach(element => {
-        res.push(element, element.match(/(?<=[\w|$])\d*(?=\.)/), element.match(/(?<=\.)\d*/))
+        res.push([element, element.match(/(?<=[\w|$])\d*(?=\.)/), element.match(/(?<=\.)\d*/)])
     });
     return res
 }
