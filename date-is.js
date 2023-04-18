@@ -1,7 +1,5 @@
 function isValid(date) {
-    console.log(Date.parse(date))
-    if (Number.isNaN(Date.parse(date))) return false
-    return true
+    return Number.isNaN(Date.parse(date)) ? false : true
 }
 
 function isAfter(date1, date2) {
