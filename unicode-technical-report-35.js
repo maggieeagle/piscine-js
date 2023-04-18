@@ -42,9 +42,9 @@ function format(date, s) {
 const d = new Date('7 January 1985, 3:08:19')
 
 
-const landing = new Date('July 20, 1969, 20:17:40')
-const returning = new Date('July 21, 1969, 17:54:12')
-const eclipse = new Date(-585, 4, 28)
-const ending = new Date('2 September 1945, 9:02:14')
+// const landing = new Date('July 20, 1969, 20:17:40')
+// const returning = new Date('July 21, 1969, 17:54:12')
+// const eclipse = new Date(-585, 4, 28)
+// const ending = new Date('2 September 1945, 9:02:14')
 
 console.log(format(eclipe, 'HH(mm)ss [dd] y <MMM>'))
