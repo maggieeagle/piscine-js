@@ -6,15 +6,29 @@ function isValid(date) {
 
 function isAfter(date1, date2) {
     if(isValid(date1) && isValid(date2)) {
-        if (date1.getTime() > date2.getTime()) return true
+        let date1int, date2int
+        if (typeof date1 != 'number') {
+            date1int = date1.getTime()
+        }
+        if (typeof date2 != 'number') {
+            date2int = date2.getTime()
+        }
+        if (date1 > date2) return true
         return false
     }
     return false
 }
 
-function isBefore(date1, date2) {
+function isAfter(date1, date2) {
     if(isValid(date1) && isValid(date2)) {
-        if (date1.getTime() < date2.getTime()) return true
+        let date1int, date2int
+        if (typeof date1 != 'number') {
+            date1int = date1.getTime()
+        }
+        if (typeof date2 != 'number') {
+            date2int = date2.getTime()
+        }
+        if (date1 < date2) return true
         return false
     }
     return false
@@ -36,4 +50,4 @@ function isPast(date) {
     return false
 }
 
-console.log(isValid(new Date('1995-12-17T03:24:00').getTime()))
+console.log(isAfter(123123, 526))
