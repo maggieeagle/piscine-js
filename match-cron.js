@@ -9,7 +9,7 @@ function matchCron(s, d) {
     if (template[2] != '*' && parseInt(template[2]) != parseInt(date[2])) return false//day of the month
     if (template[3] != '*' && parseInt(template[3]) != parseInt(date[1])) return false//month of the year
     if (template[4] != '*') {
-        day = d.getDay()==0?7:d.getDay()
+        let day = d.getDay()==0?7:d.getDay()
         if (template[4] != day) return false
     }
     return true
