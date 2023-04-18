@@ -1,5 +1,6 @@
 function isValid(date) {
     if (typeof date == 'string') return false
+    if (typeof date == 'number' && date >= 0) return true
     return Number.isNaN(Date.parse(date)) && date != Date.now()? false : true
 }
 
@@ -35,4 +36,4 @@ function isPast(date) {
     return false
 }
 
-console.log(isValid(Date.now()))
+console.log(isValid(new Date('1995-12-17T03:24:00').getTime()))
