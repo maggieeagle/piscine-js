@@ -1,5 +1,5 @@
 function isValid(date) {
-    if (date.parse() == NaN) return false
+    if (Date.parse(date) == NaN) return false
     return true
 }
 
@@ -34,3 +34,5 @@ function isPast(date) {
     }
     return false
 }
+
+// console.log(isValid(new Date()))
