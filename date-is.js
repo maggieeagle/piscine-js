@@ -36,7 +36,7 @@ function isBefore(date1, date2) {
 
 function isFuture(date) {
     if(isValid(date)) {
-        if (date.getTime() > new Date.now()) return true
+        if (date.getTime() > Date.now()) return true
         return false
     }
     return false
@@ -44,7 +44,7 @@ function isFuture(date) {
 
 function isPast(date) {
     if(isValid(date)) {
-        if (date.getTime() < new Date.now()) return true
+        if (date.getTime() < Date.now()) return true
         return false
     }
     return false
