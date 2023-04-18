@@ -13,7 +13,7 @@ function format(date, s) {
     console.log(year, month, day, hours, minutes, seconds, dayOfWeek)
 
     s = s.replace(/yyyy\b/, year)
-    s = s.replace(/y\b/, year.toString().slice(3, 4))
+    s = s.replace(/y\b/, year.toString().slice(1, 4))
     s = s.replace(/GGGG\b/, 'Anno Domini')
     s = s.replace(/G\b/, 'AD')
     s = s.replace(/MMMM\b/, monthNames[parseInt(month)])
