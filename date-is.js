@@ -1,6 +1,6 @@
 function isValid(date) {
     if (typeof date == 'string') return false
-    return Number.isNaN(Date.parse(date)) ? false : true
+    return Number.isNaN(Date.parse(date)) && date != Date.now()? false : true
 }
 
 function isAfter(date1, date2) {
@@ -35,4 +35,4 @@ function isPast(date) {
     return false
 }
 
-console.log(isValid('2013-01-01'))
+console.log(isValid(Date.now()))
