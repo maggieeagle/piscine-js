@@ -12,12 +12,10 @@ function format(date, s) {
     
     console.log(year, month, day, hours, minutes, seconds, dayOfWeek)
 
-    s = s.replace(/yyyy\b/, year)
-    s = s.replace(/yyy\b/, year.toString().slice(1, 4))
-    s = s.replace(/yy\b/, year.toString().slice(2, 4))
-    s = s.replace(/y\b/, year.toString().slice(3, 4))
-    s = s.replace(/GGGG\b/, 'Anno Domini')
-    s = s.replace(/G\b/, 'AD')
+    s = s.replace(/yyyy\b/, ('0000'+Math.abs(year).toString()).slice(-4))
+    s = s.replace(/y\b/, Math.abs(year))
+    s = s.replace(/GGGG\b/, year<0?'Before Christ':'Anno Domini')
+    s = s.replace(/G\b/, year<0?'BC':'AD')
     s = s.replace(/MMMM\b/, monthNames[parseInt(month)])
     s = s.replace(/MMM\b/, monthNames[parseInt(month)].slice(0,3))
     s = s.replace(/MM\b/, month>8?month+1:'0'+(month+1).toString())
@@ -38,3 +36,14 @@ function format(date, s) {
 
     return s
 }
+
+const landing = new Date('July 20, 1969, 20:17:40')
+const returning = new Date('July 21, 1969, 17:54:12')
+const eclipse = new Date(-585, 4, 28)
+const ending = new Date('2 September 1945, 9:02:14')
+
+console.log(format(eclipse, 'y'))
+console.log(format(landing, 'y'))
+console.log(format(eclipse, 'yyyy'))
+console.log(format(landing, 'yyyy'))
+console.log(format(eclipse, 'yyyy G'))
