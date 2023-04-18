@@ -1,5 +1,5 @@
 function isValid(date) {
-    if (date.pasre() == NaN) return false
+    if (date.parse() == NaN) return false
     return true
 }
 
