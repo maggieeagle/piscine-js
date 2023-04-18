@@ -1,4 +1,5 @@
 function isValid(date) {
+    if (typeof date == 'string') return false
     return Number.isNaN(Date.parse(date)) ? false : true
 }
 
@@ -34,4 +35,4 @@ function isPast(date) {
     return false
 }
 
-console.log(isValid(new Date('')))
+console.log(isValid('2013-01-01'))
