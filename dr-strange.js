@@ -25,8 +25,8 @@ function addWeek(date) {
 }
 
 function timeTravel(time) {
-    time.date.setHours((time.hour, time.minute, time.second))
-    return time.date
+    let date = setHours(time.hour, time.minute, time.second)
+    return date
 }
 
 // datetime = {
