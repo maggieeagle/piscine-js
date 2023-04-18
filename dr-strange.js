@@ -26,14 +26,17 @@ function addWeek(date) {
 
 function timeTravel(time) {
     time.date.setTime((time.hour*3600 + time.minute*60 + time.second)*1000)
+    return time.date
 }
 
-// timeTravel({
+// datetime = {
 //     date: new Date('2020-05-29 23:25:22'),
 //     hour: 21,
 //     minute: 22,
 //     second: 22,
-//   })
+//   }
+
+// console.log(timeTravel(datetime))
 
 // let date = new Date('0001-01-09')
 // console.log(addWeek(date))
