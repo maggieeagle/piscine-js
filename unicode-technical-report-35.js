@@ -37,13 +37,13 @@ function format(date, s) {
     return s
 }
 
-const landing = new Date('July 20, 1969, 20:17:40')
-const returning = new Date('July 21, 1969, 17:54:12')
-const eclipse = new Date(-585, 4, 28)
-const ending = new Date('2 September 1945, 9:02:14')
+// const landing = new Date('July 20, 1969, 20:17:40')
+// const returning = new Date('July 21, 1969, 17:54:12')
+// const eclipse = new Date(-585, 4, 28)
+// const ending = new Date('2 September 1945, 9:02:14')
 
-console.log(format(eclipse, 'y'))
-console.log(format(landing, 'y'))
-console.log(format(eclipse, 'yyyy'))
-console.log(format(landing, 'yyyy'))
-console.log(format(eclipse, 'yyyy G'))
+// console.log(format(eclipse, 'y'))
+// console.log(format(landing, 'y'))
+// console.log(format(eclipse, 'yyyy'))
+// console.log(format(landing, 'yyyy'))
+// console.log(format(eclipse, 'yyyy G'))
