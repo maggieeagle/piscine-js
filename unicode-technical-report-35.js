@@ -13,7 +13,9 @@ function format(date, s) {
     console.log(year, month, day, hours, minutes, seconds, dayOfWeek)
 
     s = s.replace(/yyyy\b/, year)
-    s = s.replace(/y\b/, year.toString().slice(1, 4))
+    s = s.replace(/yyy\b/, year.toString().slice(1, 4))
+    s = s.replace(/yy\b/, year.toString().slice(2, 4))
+    s = s.replace(/y\b/, year.toString().slice(3, 4))
     s = s.replace(/GGGG\b/, 'Anno Domini')
     s = s.replace(/G\b/, 'AD')
     s = s.replace(/MMMM\b/, monthNames[parseInt(month)])
@@ -39,4 +41,10 @@ function format(date, s) {
 
 const d = new Date('7 January 1985, 3:08:19')
 
-console.log(format(d, 'HH(mm)ss [dd] <MMM>'))
+
+const landing = new Date('July 20, 1969, 20:17:40')
+const returning = new Date('July 21, 1969, 17:54:12')
+const eclipse = new Date(-585, 4, 28)
+const ending = new Date('2 September 1945, 9:02:14')
+
+console.log(format(eclipe, 'HH(mm)ss [dd] y <MMM>'))
