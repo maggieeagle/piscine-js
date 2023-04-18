@@ -19,7 +19,7 @@ function isAfter(date1, date2) {
     return false
 }
 
-function isAfter(date1, date2) {
+function isBefore(date1, date2) {
     if(isValid(date1) && isValid(date2)) {
         let date1int, date2int
         if (typeof date1 != 'number') {
