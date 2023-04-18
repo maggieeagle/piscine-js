@@ -26,7 +26,7 @@ function addWeek(date) {
 
 function timeTravel(time) {
     let date = time.date
-    date.setHours(time.hour, time.minute, time.second)
+    date.setTime((time.hour*3600 + time.minute*60 + time.second)*1000)
     return date
 }
 
