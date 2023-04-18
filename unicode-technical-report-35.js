@@ -10,7 +10,7 @@ function format(date, s) {
     const seconds = date.getSeconds();
     const dayOfWeek = date.getDay();
     
-    console.log(year, month, day, hours, minutes, seconds, dayOfWeek)
+    // console.log(year, month, day, hours, minutes, seconds, dayOfWeek)
 
     s = s.replace(/yyyy\b/, ('0000'+Math.abs(year).toString()).slice(-4))
     s = s.replace(/y\b/, Math.abs(year))
@@ -32,18 +32,7 @@ function format(date, s) {
     s = s.replace(/s\b/, seconds)
     s = s.replace(/HH\b/, ('0'+Math.abs(hours).toString()).slice(-2))
     s = s.replace(/H\b/, hours)
-    s = s.replace(/a\b/, 'PM')
+    s = s.replace(/a\b/, hours>=12?'PM':'AM')
 
     return s
 }
-
-// const landing = new Date('July 20, 1969, 20:17:40')
-// const returning = new Date('July 21, 1969, 17:54:12')
-// const eclipse = new Date(-585, 4, 28)
-// const ending = new Date('2 September 1945, 9:02:14')
-
-// console.log(format(eclipse, 'y'))
-// console.log(format(landing, 'y'))
-// console.log(format(eclipse, 'yyyy'))
-// console.log(format(landing, 'yyyy'))
-// console.log(format(eclipse, 'yyyy G'))
