@@ -4,6 +4,11 @@ function map(arr, f) {
         res.push(f(arr[i], i, arr))
     }
     return res
+}
+
+function flatMap(arr, f) {
+    return makeFlat(map(arr, f),1)
+}
 
 function makeFlat(arr, depth) {
     let res = []
@@ -15,8 +20,4 @@ function makeFlat(arr, depth) {
         }
     }
     return res
-}
-
-function flatMap(arr, f) {
-    return makeFlat(map(arr, f),1)
 }
