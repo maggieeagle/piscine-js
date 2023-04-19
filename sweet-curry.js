@@ -12,7 +12,7 @@ function add3(a) {
     }
 }
 
-function add3(a) {
+function sub4(a) {
     return function (b) {
         return function (c) {
             return function (d) {
