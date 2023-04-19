@@ -22,7 +22,3 @@ function reduce(arr, f) {
 function reduceRight(arr, f) {
     return reduce(structuredClone(arr).reverse(), f)
 }
-
-const num1 = [3, 10, 26, 0]
-const adder = (a, b) => a + b
-console.log(foldRight(num1, adder, 0))
