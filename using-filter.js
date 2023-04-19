@@ -12,7 +12,7 @@ function filter5Vowels(arr) {
     return arr.filter(word => word.match(re).length >= 5)
 }
 
-function filterDistinctVowel(arr) {
+function filter1DistinctVowel(arr) {
     let re = /(?<=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])[a|e|i|o|u|A|E|I|O|U](?=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])/
     return arr.filter(word => re.test(word))
 }
