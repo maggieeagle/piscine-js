@@ -7,7 +7,7 @@ function fold(arr, f, acc) {
 }
 
 function foldRight(arr, f, acc) {
-    return fold(arr.reverse(), f, acc)
+    return fold(structuredClone(arr).reverse(), f, acc)
 }
 
 function reduce(arr, f) {
@@ -20,5 +20,9 @@ function reduce(arr, f) {
 }
 
 function reduceRight(arr, f) {
-    return reduce(arr.reverse(), f)
+    return reduce(structuredClone(arr).reverse(), f)
 }
+
+const num1 = [3, 10, 26, 0]
+const adder = (a, b) => a + b
+console.log(foldRight(num1, adder, 0))
