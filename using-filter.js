@@ -3,17 +3,17 @@ function filterShortDtateName(arr) {
 }
 
 function filterStartVowel(arr) {
-    re = /^[a|e|i|o|u|A|E|I|O|U]/
+    let re = /^[a|e|i|o|u|A|E|I|O|U]/
     return arr.filter(word => re.test(word))
 }
 
 function filter5Vowels(arr) {
-    re = /[a|e|i|o|u|A|E|I|O|U]/g
+    let re = /[a|e|i|o|u|A|E|I|O|U]/g
     return arr.filter(word => word.match(re).length >= 5)
 }
 
 function filter1DistinctVowel(arr) {
-    re = /(?<=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])[a|e|i|o|u|A|E|I|O|U](?=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])/
+    let re = /(?<=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])[a|e|i|o|u|A|E|I|O|U](?=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])/
     return arr.filter(word => re.test(word))
 }
 
