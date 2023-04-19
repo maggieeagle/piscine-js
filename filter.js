@@ -6,7 +6,7 @@ function filter(arr, f) {
     return res
 }
 
-function filter(arr, f) {
+function reject(arr, f) {
     let res=[]
     for(let i = 0; i < arr.length; i++){
         if (!f(arr[i])) res.push(arr[i])
@@ -14,7 +14,7 @@ function filter(arr, f) {
     return res
 }
 
-function filter(arr, f) {
+function partition(arr, f) {
     let res1=[], res2=[]
     for(let i = 0; i < arr.length; i++){
         if (f(arr[i])) res1.push(arr[i])
