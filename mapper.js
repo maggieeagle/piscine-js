@@ -4,13 +4,12 @@ function map(arr, f) {
         res.push(f(arr[i], i, arr))
     }
     return res
-}
 
 function makeFlat(arr, depth) {
     let res = []
     for (let i = 0; i < arr.length; i++) {
         if (Array.isArray(arr[i]) && (depth > 0 || depth == null)) {
-            res = res.concat(flat(arr[i], depth-1))
+            res = res.concat(makeFlat(arr[i], depth-1))
         } else {
             res.push(arr[i])
         }
@@ -19,5 +18,5 @@ function makeFlat(arr, depth) {
 }
 
 function flatMap(arr, f) {
-    return map(arr, f).makeFlat(1)
+    return makeFlat(map(arr, f),1)
 }
