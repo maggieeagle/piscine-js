@@ -1,9 +1,9 @@
 function currify(func) {
-    return function curried(...args){
+    return function curried(...args) {
         if (args.length >= func.length) {
             return func.apply(null, args)
         }
-        return function(...args2) {
+        return function (...args2) {
             return curried.apply(null, args.concat(args2))
         }
     }
