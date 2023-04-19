@@ -1,5 +1,5 @@
 function map(arr, f) {
-    res=[]
+    let res=[]
     for(let i = 0; i < arr.length; i++){
         res.push(f(arr[i], i))
     }
