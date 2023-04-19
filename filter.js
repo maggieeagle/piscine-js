@@ -20,5 +20,5 @@ function partition(arr, f) {
         if (f(arr[i]), i, arr) res1.push(arr[i])
         else res2.push(arr[i])
     }
-    return [].push(res1).push(res2)
+    return [res1, res2]
 }
