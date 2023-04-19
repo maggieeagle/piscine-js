@@ -1,4 +1,4 @@
-function filterShortDtateName(arr) {
+function filterShortStateName(arr) {
     return arr.filter(word => word.length < 7)
 }
 
@@ -12,7 +12,7 @@ function filter5Vowels(arr) {
     return arr.filter(word => word.match(re).length >= 5)
 }
 
-function filter1DistinctVowel(arr) {
+function filterDistinctVowel(arr) {
     let re = /(?<=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])[a|e|i|o|u|A|E|I|O|U](?=[^a|^e|^i|^o|^u|^A|^E|^I|^O|^U])/
     return arr.filter(word => re.test(word))
 }
