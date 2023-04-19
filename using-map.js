@@ -12,11 +12,22 @@ function fahrenheitToCelsius(arr) {
 
 function trimTemp(arr) {
     return arr.map(x => {
-        return {city: x.city, temperature : x.temperature.split(' ').join('')}
+        y = structuredClone(x)
+        y.temperature = y.temperature.split(' ').join('')
+        return y
     })
 }
 
 function tempForecasts(data) {
     return data.map(e => fahrenheitToCelsius([e.temperature])+'elsius in '+ upperCasingStates([e.city]) + ', ' + upperCasingStates([e.state]))
 }
+
+console.log(trimTemp([
+    { city: 'Los Angeles', temperature: '  101 °F   ' },
+    { city: 'San Francisco', temperature: ' 84 ° F   ' },
+  ])) /* -> [
+    { city: 'Los Angeles', temperature: '101°F' },
+    { city: 'San Francisco', temperature: '84°F' },
+  ] */
+  
   
