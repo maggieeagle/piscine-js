@@ -6,7 +6,7 @@ export const build = (n) => {
             template.innerHTML = "";
 
             if (i%3 == 2) {
-                template.setAttribute('foundation', true);
+                template.setAttribute('foundation', 'true');
             }
             document.body.appendChild(template);
         }, 100 * i);
@@ -18,7 +18,7 @@ export const repair = (...ids) => {
         console.log(id)
         let brick = document.getElementById(id)
         if (id%2 == 0) brick.setAttribute('repaired', 'in progress')
-        else brick.setAttribute('repaired', true)
+        else brick.setAttribute('repaired', 'true')
     });
 }
 
