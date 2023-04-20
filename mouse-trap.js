@@ -23,7 +23,7 @@ export const moveCircle = () => {
 
     function check(e, x, y) {
         let trap = box.getBoundingClientRect();
-        let top = y-e.offsetHeight/2, right = x + e.offsetWidth/2, bottom = y + e.offsetHeight/2, left = x-e.offsetWidth/2
+        let top = y-Math.round(e.offsetHeight/2), right = x + Math.round(e.offsetWidth/2), bottom = y + Math.round(e.offsetHeight/2), left = x-Math.round(e.offsetWidth/2)
         if (!e.classList.contains('trapped')) return true
         else if (top > trap.top+1 && left > trap.left &&
             bottom < trap.bottom && right < trap.right) return true
