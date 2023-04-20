@@ -6,7 +6,7 @@ export const build = (n) => {
             template.innerHTML = "";
 
             if (i%3 == 2) {
-                template.setAttribute('foundation', 'true');
+                template.setAttribute('foundation', i);
             }
             document.body.appendChild(template);
         }, 100 * i);
