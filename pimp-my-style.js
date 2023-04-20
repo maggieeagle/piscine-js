@@ -18,10 +18,11 @@ export const pimp = () => {
             return;
         }
     } else {
-        if (length > 2) {
+        if (length > 3) {
             let current = button.classList[length - 2]
             button.classList.remove(current)
         } else {
+            button.classList.remove("one")
             button.classList.remove("unpimp")
         }
     }
