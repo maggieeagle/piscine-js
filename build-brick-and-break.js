@@ -17,8 +17,8 @@ export const repair = (...ids) => {
     ids.forEach(id => {
         console.log(id)
         let brick = document.getElementById(id)
-        if (id%2 == 0) brick.setAttribute('repaired', 'in progress')
-        else brick.setAttribute('repaired', 'true')
+        if (id.replace('brick-','')%3 == 2) brick.dataset.repaired = 'in progress'
+        else brick.dataset.repaired = true
     });
 }
 
