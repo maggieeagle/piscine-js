@@ -5,7 +5,7 @@ export const build = (n) => {
             template.setAttribute('id', 'brick-' + i);
             template.innerHTML = "";
 
-            if (n%3 == 2) {
+            if (i%3 == 2) {
                 template.setAttribute('foundation', true);
             }
             document.body.appendChild(template);
