@@ -24,6 +24,7 @@ export const moveCircle = () => {
         if (circle.top > trap.top + 1 && circle.left > trap.left + 1 &&
             circle.bottom < trap.bottom - 1 && circle.right < trap.right - 1) {
             e.classList.add('trapped')
+            e.style.backgroundColor = getComputedStyle(document.body).getPropertyValue('--purple')
         }
     }
 
