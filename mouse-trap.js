@@ -25,7 +25,7 @@ export const moveCircle = () => {
         let trap = box.getBoundingClientRect();
         let top = y-e.offsetHeight/2, right = x + e.offsetWidth/2, bottom = y + e.offsetHeight/2, left = x-e.offsetWidth/2
         if (!e.classList.contains('trapped')) return true
-        else if (top > trap.top+1 && left > trap.left &&
+        else if (top > trap.top+1 && left > trap.left+1 &&
             bottom < trap.bottom && right < trap.right) return true
         return false
     }
