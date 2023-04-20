@@ -2,9 +2,9 @@ export const createCircle = () => {
     document.addEventListener('click', (e) => {
         const template = document.createElement('div');
         template.classList.add('circle');
-        setPosition(template, e.pageX, e.pageY)
         template.style.backgroundColor = 'white'
         document.body.appendChild(template);
+        setPosition(template, e.pageX-template.offsetWidth/2, e.pageY-template.offsetHeight/2)
     })
 }
 
@@ -13,7 +13,7 @@ export const moveCircle = () => {
     document.addEventListener('mousemove', (e) => {
         let last = document.body.lastChild
         if (last != null) {
-            if (check(last, e.pageX, e.pageY)) setPosition(last, e.pageX, e.pageY)
+            if (check(last, e.pageX, e.pageY)) setPosition(last, e.pageX-last.offsetWidth/2, e.pageY-last.offsetHeight/2)
             if (!last.classList.contains('trapped')) trap(last)
         }
     })
@@ -29,7 +29,7 @@ export const moveCircle = () => {
 
     function check(e, x, y) {
         let trap = box.getBoundingClientRect();
-        let top = y, right = x + e.offsetWidth, bottom = y + e.offsetHeight, left = x
+        let top = y-e.offsetHeight/2, right = x + e.offsetWidth/2, bottom = y + e.offsetHeight/2, left = x-e.offsetWidth/2
         if (!e.classList.contains('trapped')) return true
         else if (top > trap.top + 1 && left > trap.left + 1 &&
             bottom < trap.bottom - 1 && right < trap.right - 1) return true
@@ -40,7 +40,6 @@ export const moveCircle = () => {
 export const setBox = () => {
     const template = document.createElement('div');
     template.classList.add('box');
-    // setPosition(template, (window.innerWidth - template.width) / 2, (window.innerHeight - template.height) / 2)
     document.body.appendChild(template);
 }
 
