@@ -8,8 +8,6 @@ export const pimp = () => {
     }
     let length = button.classList.length
     if (length == styles.length + 1 && !button.classList.contains('unpimp')) {
-        let current = button.classList[length - 1]
-        button.classList.remove(current)
         button.classList.add("unpimp")
         return;
     }
