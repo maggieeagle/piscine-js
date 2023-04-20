@@ -3,7 +3,7 @@ export const createCircle = () => {
     document.addEventListener('click', (e) => {
         const template = document.createElement('div');
         template.classList.add('circle');
-        template.style.backgroundColor = 'white'
+        template.style.background = 'white'
         document.body.appendChild(template);
         setPosition(template, e.pageX-template.offsetWidth/2, e.pageY-template.offsetHeight/2)
         trap(template, box)
