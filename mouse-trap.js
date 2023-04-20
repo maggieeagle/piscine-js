@@ -25,8 +25,8 @@ export const moveCircle = () => {
         let trap = box.getBoundingClientRect();
         let top = y-e.offsetHeight/2, right = x + e.offsetWidth/2, bottom = y + e.offsetHeight/2, left = x-e.offsetWidth/2
         if (!e.classList.contains('trapped')) return true
-        else if (top > trap.top+1 && left > trap.left+1 &&
-            bottom < trap.bottom-1 && right < trap.right-1) return true
+        else if (top > trap.top+1 && left > trap.left &&
+            bottom < trap.bottom && right < trap.right) return true
         return false
     }
 }
@@ -45,7 +45,7 @@ function setPosition(e, x, y) {
 function trap(e, box) {
     let trap = box.getBoundingClientRect();
     let circle = e.getBoundingClientRect();
-    if (circle.top > trap.top + 1 && circle.left > trap.left+1 &&
+    if (circle.top > trap.top + 1 && circle.left > trap.left &&
         circle.bottom < trap.bottom && circle.right < trap.right) {
         e.classList.add('trapped')
         e.style.background = `var(--purple)`;
