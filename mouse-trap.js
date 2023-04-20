@@ -47,6 +47,6 @@ function trap(e, box) {
     if (circle.top > trap.top + 1 && circle.left > trap.left &&
         circle.bottom < trap.bottom && circle.right < trap.right) {
         e.classList.add('trapped')
-        e.style.background = getComputedStyle(document.body).getPropertyValue('--purple')
+        e.style.backgroundColor = getComputedStyle(document.querySelector(':root')).getPropertyValue('--purple')
     }
 }
