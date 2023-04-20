@@ -1,6 +1,6 @@
 export const generateLetters = () => {
     const alphabet = "ABCDEFGHIJKLMNPQRSTUVWXYZ"
-    for (let i = 1, size=11; i <= 120; i++, size++) {
+    for (let i = 0, size=11; i < 120; i++, size++) {
         const template = document.createElement('div');
         template.innerHTML = alphabet[getRandomInt(alphabet.length)];
         template.style.fontSize = size + 'px'
