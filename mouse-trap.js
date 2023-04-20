@@ -15,6 +15,7 @@ export const moveCircle = () => {
     document.addEventListener('mousemove', (e) => {
         let last = document.body.lastChild
         if (last != null) {
+            console.log(e.pageX-last.offsetWidth/2, e.pageY-last.offsetHeight/2)
             if (check(last, e.pageX, e.pageY)) setPosition(last, e.pageX-last.offsetWidth/2, e.pageY-last.offsetHeight/2)
             if (!last.classList.contains('trapped')) trap(last, box)
         }
@@ -44,7 +45,7 @@ function setPosition(e, x, y) {
 function trap(e, box) {
     let trap = box.getBoundingClientRect();
     let circle = e.getBoundingClientRect();
-    if (circle.top > trap.top + 1 && circle.left > trap.left &&
+    if (circle.top > trap.top + 1 && circle.left > trap.left+1 &&
         circle.bottom < trap.bottom && circle.right < trap.right) {
         e.classList.add('trapped')
         e.style.background = `var(--purple)`;
