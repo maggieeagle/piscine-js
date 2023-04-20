@@ -7,13 +7,16 @@ export const pimp = () => {
         return;
     }
     let length = button.classList.length
-    if (length == styles.length + 1 && !button.classList.contains('unpimp')) {
-        button.classList.add("unpimp")
-        return;
-    }
     if (!button.classList.contains('unpimp')) {
         let current = button.classList[length - 1]
         button.classList.add(styles[styles.indexOf(current) + 1])
+        length++
+        if (length == styles.length + 1 && !button.classList.contains('unpimp')) {
+            // let current = button.classList[length - 1]
+            // button.classList.remove(current)
+            button.classList.add("unpimp")
+            return;
+        }
     } else {
         if (length > 2) {
             let current = button.classList[length - 2]
