@@ -42,37 +42,33 @@ export const pick = () => {
             svg.setAttribute("width", window.innerWidth);
             svg.setAttribute("height", window.innerHeight);
 
-            var vertical = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            vertical.setAttribute("x1", e.pageX);
-            vertical.setAttribute("y1", 0);
-            vertical.setAttribute("x2", e.pageX);
-            vertical.setAttribute("y2", window.innerHeight);
-            vertical.setAttribute("id", "axisY")
+            var axisX = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            axisX.setAttribute("x1", e.pageX);
+            axisX.setAttribute("y1", 0);
+            axisX.setAttribute("x2", e.pageX);
+            axisX.setAttribute("y2", window.innerHeight);
+            axisX.setAttribute("id", "axisX")
 
-            svg.appendChild(vertical);
+            svg.appendChild(axisX);
 
-            var horizontal = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            horizontal.setAttribute("x1", 0);
-            horizontal.setAttribute("y1", e.pageY);
-            horizontal.setAttribute("x2", window.innerWidth);
-            horizontal.setAttribute("y2", e.pageY);
-            horizontal.setAttribute("id", "axisX")
+            var axisY = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            axisY.setAttribute("x1", 0);
+            axisY.setAttribute("y1", e.pageY);
+            axisY.setAttribute("x2", window.innerWidth);
+            axisY.setAttribute("y2", e.pageY);
+            axisY.setAttribute("id", "axisY")
 
-            svg.appendChild(horizontal);
+            svg.appendChild(axisY);
 
             document.body.appendChild(svg);
         } else {
-            vertical = document.querySelector("#axisY")
-            vertical.setAttribute("x1", e.pageX);
-            vertical.setAttribute("y1", 0);
-            vertical.setAttribute("x2", e.pageX);
-            vertical.setAttribute("y2", window.innerHeight);
+            axisX = document.querySelector("#axisX")
+            axisX.setAttribute("x1", e.pageX);
+            axisX.setAttribute("x2", e.pageX);
 
-            horizontal = document.querySelector("#axisX")
-            horizontal.setAttribute("x1", 0);
-            horizontal.setAttribute("y1", e.pageY);
-            horizontal.setAttribute("x2", window.innerWidth);
-            horizontal.setAttribute("y2", e.pageY);
+            axisY = document.querySelector("#axisY")
+            axisY.setAttribute("y1", e.pageY);
+            axisY.setAttribute("y2", e.pageY);
         }
     }
 }
