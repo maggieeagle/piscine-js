@@ -3,7 +3,7 @@ export const pick = () => {
     document.addEventListener('mousemove', (e) => {
         let value = Math.round(360 / window.innerWidth * e.pageX)
         let luminosity = Math.round(100 / window.innerHeight * e.pageY)
-        hsl = 'hsl(' + value + ', 100%, ' + luminosity + '%)'
+        hsl = 'hsl(' + value + ', 50%, ' + luminosity + '%)'
         document.body.style.backgroundColor = hsl
 
         setDiv(hsl, 'hsl', 'bla')
