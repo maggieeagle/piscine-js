@@ -24,7 +24,7 @@ export const explore = () => {
 
     function addSection(name) {
         let template = document.createElement('section');
-        template.style.backgroundImage = "url('https://public.01-edu.org/subjects/where-do-we-go/where-do-we-go_images/" + name + ".jpg')"
+        template.style.background = "url('https://public.01-edu.org/subjects/where-do-we-go/where-do-we-go_images/" + name + ".jpg')"
         document.body.appendChild(template);
     }
 
