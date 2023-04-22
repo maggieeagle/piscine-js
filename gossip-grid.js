@@ -24,7 +24,7 @@ export const grid = () => {
     width.addEventListener("input", (e) => {
         let gossips = document.querySelectorAll('.gossip')
         gossips.forEach(gossip => {
-            gossip.style.width = (200+e.target.value*6) + 'px'
+            gossip.style.width = e.target.value + 'px'
             console.log(e.target.value)
         });
     });
@@ -33,7 +33,7 @@ export const grid = () => {
     fontSize.addEventListener("input", (e) => {
         let gossips = document.querySelectorAll('.gossip')
         gossips.forEach(gossip => {
-            gossip.style.fontSize = (20+e.target.value/5) + 'px'
+            gossip.style.fontSize = e.target.value + 'px'
             console.log(e.target.value)
         });
     });
@@ -42,8 +42,7 @@ export const grid = () => {
     background.addEventListener("input", (e) => {
         let gossips = document.querySelectorAll('.gossip')
         gossips.forEach(gossip => {
-            console.log(20+e.target.value/(100/55))
-            let hsl = 'hsl(280, 50%, ' + parseInt(20+e.target.value/(100/55)) + '%)'
+            let hsl = 'hsl(280, 50%, ' + e.target.value + '%)'
             gossip.style.background = hsl
         });
     });
@@ -62,11 +61,13 @@ export const grid = () => {
         else document.body.appendChild(template);
     }
 
-    function setRange(id) {
+    function setRange(id, min, max) {
         const template = document.createElement('input');
         template.classList.add('range')
         template.setAttribute('type', 'range')
         template.setAttribute('id', id)
+        template.setAttribute('min', min)
+        template.setAttribute('max', max)
         console.log(template)
         return template
     }
@@ -74,9 +75,9 @@ export const grid = () => {
     function setRanges(id) {
         const template = document.createElement('div');
         template.classList.add('ranges')
-        template.appendChild(setRange('width'))
-        template.appendChild(setRange('fontSize'))
-        template.appendChild(setRange('background'))
+        template.appendChild(setRange('width', 200, 800))
+        template.appendChild(setRange('fontSize', 20, 40))
+        template.appendChild(setRange('background', 20, 75))
         document.body.appendChild(template);
     }
 }
