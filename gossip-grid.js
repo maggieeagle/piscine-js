@@ -2,8 +2,8 @@ import { gossips } from './gossip-grid.data.js '
 
 export const grid = () => {
     setRanges()
-    let form = '<form><textarea placeholder="Got a gossip to share?"></textarea><input type="submit" value="Share gossip!"></form>'
-    setGossip(form)
+    let form = '<textarea placeholder="Got a gossip to share?"></textarea><button type="submit">Share gossip!</button>'
+    setGossip(form, 'form')
 
     gossips.forEach(gossip => {
         setGossip(gossip)
@@ -14,8 +14,9 @@ export const grid = () => {
     button.addEventListener("submit", (event) => {
         event. preventDefault();
         let gossip = document.querySelector('.gossip')
+        console.log(gossip.textContent)
         let textarea = document.querySelector('textarea')
-        setGossip(textarea.value, 3, gossip.style.width, gossip.style.fontSize, gossip.style.background)
+        setGossip(textarea.value, null, 3, gossip.style.width, gossip.style.fontSize, gossip.style.background)
         textarea.value = ''
     });
 
@@ -47,8 +48,10 @@ export const grid = () => {
         });
     });
     
-    function setGossip(innerHTML, pos, width, font, color) {
-        const template = document.createElement('div');
+    function setGossip(innerHTML, tag, pos, width, font, color) {
+        let template
+        if (tag != null) template = document.createElement(tag);
+        else template = document.createElement('div');
         template.classList.add('gossip')
         template.innerHTML = innerHTML;
         if (width != null) template.style.width = width
