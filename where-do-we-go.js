@@ -8,7 +8,7 @@ export const explore = () => {
         const bLat = dmsToLatLon(b.coordinates)[0]
         return bLat - aLat; // Sort from north to south
     });
-    
+
     places.forEach(place => {
         addSection(place.name.split(', ')[0].split(' ').join('-').toLowerCase())
     });
@@ -42,8 +42,8 @@ export const explore = () => {
         let scroll = Math.ceil((window.scrollY - (window.innerHeight / 2)) / window.innerHeight)
         indicator.innerHTML = places[scroll].name + '\n' + places[scroll].coordinates
         indicator.style.color = places[scroll].color
-        let coordinates = dmsToLatLon(places[scroll].coordinates)
-        indicator.setAttribute('href', 'http://www.google.com/maps/place/' + coordinates[0] + ',' + coordinates[1])
+        // let coordinates = dmsToLatLon(places[scroll].coordinates)
+        indicator.setAttribute('href', 'http://www.google.com/maps/place/' + places[scroll].coordinates.split(' ').join(''))
         indicator.setAttribute('target', '_blank')
     }
 
