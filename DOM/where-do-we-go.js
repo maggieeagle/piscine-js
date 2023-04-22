@@ -2,11 +2,9 @@ import { places } from './where-do-we-go.data.js'
 
 export const explore = () => {
     places.sort((a, b) => {
-        // const aLat = parseFloat(a.coordinates.split(' ')[0]);
-        // const bLat = parseFloat(b.coordinates.split(' ')[0]);
         const aLat = dmsToLatLon(a.coordinates)[0]
         const bLat = dmsToLatLon(b.coordinates)[0]
-        return bLat - aLat; // Sort from north to south
+        return bLat - aLat; // Sort from North to South
     });
 
     places.forEach(place => {
@@ -42,14 +40,6 @@ export const explore = () => {
         let scroll = Math.ceil((window.scrollY - (window.innerHeight / 2)) / window.innerHeight)
         indicator.innerHTML = places[scroll].name + '\n' + places[scroll].coordinates
         indicator.style.color = places[scroll].color
-        console.log(document.querySelector('.location').textContent.split('\n')[1])
-        console.log(('http://www.google.com/maps/place/' + places[scroll].coordinates).split('%C2%B0')
-        .join('°')
-        .split('%22')
-        .join('"')
-        .split('%20')
-        .join(' '))
-        // let coordinates = dmsToLatLon(places[scroll].coordinates)
         indicator.setAttribute('href', 'http://www.google.com/maps/place/' + places[scroll].coordinates)
         indicator.setAttribute('target', '_blank')
     }
