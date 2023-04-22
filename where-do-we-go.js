@@ -1,12 +1,14 @@
 import { places } from './where-do-we-go.data.js'
 
-places.sort((a, b) => {
-    const aLat = parseFloat(a.coordinates.split(' ')[0]);
-    const bLat = parseFloat(b.coordinates.split(' ')[0]);
-    return bLat - aLat; // Sort from north to south
-});
-
 export const explore = () => {
+    places.sort((a, b) => {
+        // const aLat = parseFloat(a.coordinates.split(' ')[0]);
+        // const bLat = parseFloat(b.coordinates.split(' ')[0]);
+        const aLat = dmsToLatLon(a.coordinates)[0]
+        const bLat = dmsToLatLon(b.coordinates)[0]
+        return bLat - aLat; // Sort from north to south
+    });
+    
     places.forEach(place => {
         addSection(place.name.split(', ')[0].split(' ').join('-').toLowerCase())
     });
