@@ -13,10 +13,10 @@ export const grid = () => {
     console.log(button)
     button.addEventListener("click", (event) => {
         event. preventDefault();
-        let text = document.querySelector('textarea').value
-        console.log(text, 'hey')
         let gossip = document.querySelector('.gossip')
-        setGossip(text, 3, gossip.style.width, gossip.style.fontSize, gossip.style.background)
+        let textarea = document.querySelector('textarea')
+        setGossip(textarea.value, 3, gossip.style.width, gossip.style.fontSize, gossip.style.background)
+        textarea.value = ''
     });
 
     const width = document.querySelector('#width')
