@@ -2,16 +2,16 @@ import { gossips } from './gossip-grid.data.js '
 
 export const grid = () => {
     setRanges()
-    let form = '<form><textarea placeholder="Got a gossip to share?"></textarea><button type="submit">Share gossip!</button></form>'
+    let form = '<form><textarea placeholder="Got a gossip to share?"></textarea><input type="submit" value="Share gossip!"></form>'
     setGossip(form)
 
     gossips.forEach(gossip => {
         setGossip(gossip)
     });
 
-    const button = document.querySelector('button')
+    const button = document.querySelector('form')
     console.log(button)
-    button.addEventListener("click", (event) => {
+    button.addEventListener("submit", (event) => {
         event. preventDefault();
         let gossip = document.querySelector('.gossip')
         let textarea = document.querySelector('textarea')
