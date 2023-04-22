@@ -15,7 +15,8 @@ export const grid = () => {
         event. preventDefault();
         let text = document.querySelector('textarea').value
         console.log(text, 'hey')
-        setGossip(text, 3)
+        let gossip = document.querySelector('.gossip')
+        setGossip(text, 3, gossip.style.width, gossip.style.fontSize, gossip.style.background)
     });
 
     const width = document.querySelector('#width')
@@ -46,10 +47,14 @@ export const grid = () => {
         });
     });
     
-    function setGossip(innerHTML, pos) {
+    function setGossip(innerHTML, pos, width, font, color) {
         const template = document.createElement('div');
         template.classList.add('gossip')
         template.innerHTML = innerHTML;
+        if (width != null) template.style.width = width
+        if (font != null) template.style.fontSize = font
+        if (color != null) template.style.background = color
+
         if (pos != null) document.body.insertBefore(template, document.body.children[pos]);
         else document.body.appendChild(template);
     }
