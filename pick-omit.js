@@ -14,4 +14,4 @@ function omit(obj, keys) {
     return Object.fromEntries(arr)
 }
 
-console.log(pick({1:'hey', 2:'Jude', 3:'how', four:'are'}, ['four', '2']))
+// console.log(pick({1:'hey', 2:'Jude', 3:'how', four:'are'}, ['four', '2']))
