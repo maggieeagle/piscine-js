@@ -32,7 +32,7 @@ function lowCarbs(cart) {
 function cartTotal(cart) {
     const cartItemsWithNutrition = filterEntries(nutritionDB, ([item]) => item in cart);
     Object.entries(cartItemsWithNutrition).forEach(product => {
-        let newProduct = mapEntries(product[1], ([key, value]) => [key, cart[product[0]]*value/100])
+        let newProduct = mapEntries(product[1], ([key, value]) => [key, parseFloat((cart[product[0]]*value/100).toFixed(3))])
         cart[product[0]] = newProduct
     });
     return cart
@@ -57,4 +57,4 @@ function cartTotal(cart) {
 // console.log('Items with low carbs:')
 // console.log(lowCarbs(groceriesCart))
 // console.log('Total cart nutional facts:')
-// console.log(totalCart(groceriesCart))
+// console.log(cartTotal(groceriesCart))
