@@ -25,7 +25,7 @@ function totalCalories(cart) {
 }
 
 function lowCarbs(cart) {
-    const lowCarbsItems = filterEntries(cart, ([item]) => nutritionDB[item].carbs*cart[item] < 50);
+    const lowCarbsItems = filterEntries(cart, ([item]) => nutritionDB[item].carbs*cart[item]/100 < 50);
     return lowCarbsItems;
 }
 
@@ -50,11 +50,11 @@ function totalCart(cart) {
 // }
 
 
-// const groceriesCart = { orange: 500, oil: 20, sugar: 480 }
+// const groceriesCart = { oil: 500, onion: 230, garlic: 220, paprika: 480 }
 
-// console.log('Total calories:')
-// console.log(totalCalories(groceriesCart))
+// // console.log('Total calories:')
+// // console.log(totalCalories(groceriesCart))
 // console.log('Items with low carbs:')
 // console.log(lowCarbs(groceriesCart))
-// console.log('Total cart nutional facts:')
-// console.log(totalCart(groceriesCart))
+// // console.log('Total cart nutional facts:')
+// // console.log(totalCart(groceriesCart))
