@@ -41,7 +41,7 @@ function reduceScore(personnel, init) {
     return reduceCurry((acc, [k, v]) => (acc += v.pilotingScore + v.shootingScore))(forceUsers, init)
 }
 
-function filterScore(personnel) {
+function filterForce(personnel) {
     return filterCurry(([k, v]) => v[shootingScores] >= 80)(personnel)
 }
 
