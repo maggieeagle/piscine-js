@@ -8,8 +8,8 @@ function mapValues(nutrients, func) {
     return Object.fromEntries(modified)
 }
 
-function reduceValues(nutrients, func) {
-    let summ = Object.values(nutrients).reduce(func);
+function reduceValues(nutrients, func, init) {
+    let summ = Object.values(nutrients).reduce(func, init==null?0:init);
     return summ
 }
 
@@ -17,4 +17,4 @@ function reduceValues(nutrients, func) {
 // console.log(filterValues(nutrients, (nutrient) => nutrient <= 12))
 // console.log(mapValues(nutrients, (v) => v+1))
 // console.log(reduceValues(nutrients, (acc, cr) => acc + cr))
-
+// console.log(reduceValues({ a: 1, b: 2, c: 3 }, (acc, cr) => acc + cr, 3))
