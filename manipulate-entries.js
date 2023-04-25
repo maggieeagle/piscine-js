@@ -1,20 +1,20 @@
-function filterValues(nutrients, condition) {
+function filterEntries(nutrients, condition) {
     let filtered = Object.entries(nutrients).filter(entry => condition(entry));
     return Object.fromEntries(filtered)
 }
 
-function mapValues(nutrients, func) {
+function mapEntries(nutrients, func) {
     let modified = Object.entries(nutrients).map(([key, value]) => func([key, value]));
     return Object.fromEntries(modified)
 }
 
-function reduceValues(nutrients, func) {
+function reduceEntries(nutrients, func) {
     let summ = Object.entries(nutrients).reduce(func);
     return summ
 }
 
 function totalCalories(cart) {
-    const cartItemsWithNutrition = filterValues(nutritionDB, ([item]) => item in cart);
+    const cartItemsWithNutrition = filterEntries(nutritionDB, ([item]) => item in cart);
     const calories = Object.entries(cartItemsWithNutrition).reduce((total, [item, nutrientValues]) => {
         const itemQuantity = cart[item];
         const itemCalories = nutrientValues.calories;
@@ -25,14 +25,14 @@ function totalCalories(cart) {
 }
 
 function lowCarbs(cart) {
-    const lowCarbsItems = filterValues(cart, ([item]) => nutritionDB[item].carbs*cart[item] < 50);
+    const lowCarbsItems = filterEntries(cart, ([item]) => nutritionDB[item].carbs*cart[item] < 50);
     return lowCarbsItems;
 }
 
 function totalCart(cart) {
-    const cartItemsWithNutrition = filterValues(nutritionDB, ([item]) => item in cart);
+    const cartItemsWithNutrition = filterEntries(nutritionDB, ([item]) => item in cart);
     Object.entries(cartItemsWithNutrition).forEach(product => {
-        let newProduct = mapValues(product[1], ([key, value]) => [key, cart[product[0]]*value/100])
+        let newProduct = mapEntries(product[1], ([key, value]) => [key, cart[product[0]]*value/100])
         cart[product[0]] = newProduct
     });
     return cart
