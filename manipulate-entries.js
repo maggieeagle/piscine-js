@@ -29,7 +29,7 @@ function lowCarbs(cart) {
     return lowCarbsItems;
 }
 
-function totalCart(cart) {
+function cartTotal(cart) {
     const cartItemsWithNutrition = filterEntries(nutritionDB, ([item]) => item in cart);
     Object.entries(cartItemsWithNutrition).forEach(product => {
         let newProduct = mapEntries(product[1], ([key, value]) => [key, cart[product[0]]*value/100])
