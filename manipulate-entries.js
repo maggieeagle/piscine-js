@@ -21,7 +21,7 @@ function totalCalories(cart) {
         return total + itemCalories/100 * itemQuantity;
     }, 0);
 
-    return calories.toFixed(1);
+    return parseFloat(calories.toFixed(1))
 }
 
 function lowCarbs(cart) {
