@@ -1,6 +1,6 @@
 function deepCopy(data) {
     let res = Array.isArray(data) ? [] : {}
-    for (i in data) {
+    for (let i in data) {
         if (typeof data[i] == 'object') {
             if (data[i] instanceof RegExp) {
                 console.log('regexp', data[i])
