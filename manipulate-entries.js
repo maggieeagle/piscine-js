@@ -8,8 +8,8 @@ function mapEntries(nutrients, func) {
     return Object.fromEntries(modified)
 }
 
-function reduceEntries(nutrients, func) {
-    let summ = Object.entries(nutrients).reduce(func);
+function reduceEntries(nutrients, func, init) {
+    let summ = Object.entries(nutrients).reduce(func, init);
     return summ
 }
 
