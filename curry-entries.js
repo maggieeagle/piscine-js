@@ -37,7 +37,7 @@ function filterCurry(condition) {
 }
 
 function reduceScore(personnel, init) {
-    forceUsers = filterCurry(([k, v]) => v.isForceUser)(personnel)
+    let forceUsers = filterCurry(([k, v]) => v.isForceUser)(personnel)
     return reduceCurry((acc, [k, v]) => (acc += v.pilotingScore + v.shootingScore))(forceUsers, init)
 }
 
