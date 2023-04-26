@@ -1,8 +1,7 @@
 function neuron(arr) {
     let output = {}
     for (let i in arr) {
-        // console.log(arr[i])
-        let re = /^(\w*): ([\w|\s|?|!|,]*) - (\w*): ([\w|\s|?|!|,]*)/
+        let re = /^(\w*): ([\w|\s|?|!|,]*) - (\w*): ([\w|\s|?|!|,|\.]*)/
         let match = arr[i].match(re)
         let key1 = match[1].toLowerCase(), key2 = format(match[2].toLowerCase()),
             key3 = key1.slice(0, -1)
@@ -40,5 +39,5 @@ function format(str) {
 
 // console.log(neuron([
 //     'Questions: what is life? - Response: The condition that distinguishes animals and plants from inorganic matter',
-//     'Questions: what is life? - Response: Life is a characteristic that distinguishes physical entities that have biological processes',
+//     'Questions: what is life? - Response: Life is a characteristic that distinguishes physical entities that have biological processes.',
 //   ]).questions.what_is_life)
