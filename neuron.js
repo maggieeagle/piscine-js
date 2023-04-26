@@ -1,7 +1,7 @@
 function neuron(arr) {
     let output = {}
     for (let i in arr) {
-        let re = /^(\w*): ([\w|\s|?|!|,]*) - (\w*): ([\w|\s|?|!|,|\.|&|–|-|(|)]*)/
+        let re = /^(\w*): ([\w|\s|?|!|,]*) - (\w*): ([\w|\s|?|!|,|\.|&|–|\-|(|)]*)/
         let match = arr[i].match(re)
         let key1 = match[1].toLowerCase(), key2 = format(match[2].toLowerCase()),
             key3 = key1.slice(0, -1)
