@@ -1,6 +1,6 @@
 function neuron(arr) {
     let output = {}
-    for (i in arr) {
+    for (let i in arr) {
         console.log(arr[i])
         let re = /^(\w*): ([\w|\s|?|!|,]*) - (\w*): ([\w|\s|?|!|,]*)/
         let match = arr[i].match(re)
