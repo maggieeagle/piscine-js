@@ -1,8 +1,11 @@
 const pronouns = ['i', 'you', 'he', 'she', 'it', 'they', 'we']
 
 function pronoun(str) {
-    let words = str.split(/\s|\s,/)
-    let found = pronouns.filter(pronoun => str.includes(' ' + pronoun + ' '))
+    str = str.toLowerCase()
+    let words = str.split(/\s|\s,|\n|,\n/)
+    // console.log(words)
+    let found = pronouns.filter(pronoun => words.indexOf(pronoun) != -1)
+    // console.log(found)
     let obj = {}
     found.forEach(pronoun => {
         var count = words.reduce(function (n, val) {
@@ -27,3 +30,5 @@ function getWordsAfter(arr, val) {
 
 // console.log(pronoun(ex))
 // console.log(pronoun(ex2))
+
+// console.log(pronoun('I buy,\ni to,\nYOU buy,\nit have,\nIt buys,\nit is,\nyou go'))
