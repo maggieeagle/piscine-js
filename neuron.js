@@ -4,7 +4,7 @@ function neuron(arr) {
         console.log(arr[i])
         let re = /^(\w*): ([\w|\s|?|!|,]*) - (\w*): ([\w|\s|?|!|,]*)/
         let match = arr[i].match(re)
-        let key1 = match[1].toLowerCase(), key2 = removeSign(match[2].toLowerCase()),
+        let key1 = match[1].toLowerCase(), key2 = format(match[2].toLowerCase()),
             key3 = key1.slice(0, -1)
         if (output[key1] == undefined) {
             output[key1] = { [key2]: { [key3]: match[2], 'responces': [match[4]] } }
@@ -20,10 +20,11 @@ function neuron(arr) {
     return output
 }
 
-function removeSign(str) {
+function format(str) {
     if (str.slice(-1) === "?" || str.slice(-1) === "!") {
         str = str.slice(0, -1);
     }
+    str = str.replace(' ', '_')
     return str
 }
 
@@ -34,3 +35,5 @@ function removeSign(str) {
 //     'Orders: shutdown! - Response: Yes Sr!',
 //     'Orders: Quote something! - Response: Pursue what catches your heart, not what catches your eyes.'
 // ]))
+
+// console.log(neuron(['Orders: shutdown please! - Response: no!']).orders.shutdown_please)
