@@ -3,7 +3,8 @@ function flags(obj) {
     Object.entries(obj).forEach(entry => {
         if (entry[0] != 'help') {
             output.alias[entry[0][0]] = entry[0]
-            if (obj.help == undefined || obj.help.indexOf(entry[0]) != -1)
+            if (obj.help == undefined)output.description.push('-' + entry[0][0] + ', --' + entry[0] + ': ' + entry[1])
+            else if(obj.help.indexOf(entry[0]) != -1)
                 output.description.splice(obj.help.indexOf(entry[0]), 0, '-' + entry[0][0] + ', --' + entry[0] + ': ' + entry[1])
         }
     });
@@ -14,7 +15,7 @@ function flags(obj) {
 // console.log(flags({
 //     multiply: 'multiply the values',
 //     divide: 'divides the values',
-//     help: ['divide']
+//     // help: ['divide']
 // }))
 
 // console.log(flags({
