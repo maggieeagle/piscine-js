@@ -3,23 +3,18 @@ function deepCopy(data) {
     for (let i in data) {
         if (typeof data[i] == 'object') {
             if (data[i] instanceof RegExp) {
-                console.log('regexp', data[i])
                 res[i] = new RegExp(data[i])
             } else {
-                console.log('object', data[i])
                 res[i] = deepCopy(data[i])
             }
         } else {
             if (typeof data[i] == 'function') {
-                console.log('function', data[i])
                 res[i] = data[i]
                 continue;
             }
-            console.log('number or string', data[i])
             res[i] = data[i]
         }
     }
-    console.log('returning value', res)
     return res
 }
 
