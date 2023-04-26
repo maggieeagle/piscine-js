@@ -7,10 +7,10 @@ function neuron(arr) {
         let key1 = match[1].toLowerCase(), key2 = format(match[2].toLowerCase()),
             key3 = key1.slice(0, -1)
         if (output[key1] == undefined) {
-            output[key1] = { [key2]: { [key3]: match[2], responces: [match[4]] } }
+            output[key1] = { [key2]: { [key3]: match[2], responses: [match[4]] } }
         } else {
             if (output[key1][key2] == undefined) {
-                output[key1][key2] = { [key3]: match[2], responces: [match[4]] }
+                output[key1][key2] = { [key3]: match[2], responses: [match[4]] }
             }
             else {
                 output[key1][key2].responces.push(match[4])
