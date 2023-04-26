@@ -13,7 +13,7 @@ function neuron(arr) {
                 output[key1][key2] = { [key3]: match[2], responses: [match[4]] }
             }
             else {
-                output[key1][key2].responces.push(match[4])
+                output[key1][key2].responses.push(match[4])
             }
         }
     }
