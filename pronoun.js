@@ -19,7 +19,7 @@ function pronoun(str) {
 function getWordsAfter(arr, val) {
     var i=-1, words = [];
     while ((i = arr.indexOf(val, i+1)) != -1){
-        if (pronouns.indexOf(arr[i+1]) == -1)
+        if (arr[i+1] != undefined && pronouns.indexOf(arr[i+1]) == -1)
         words.push(arr[i+1]);
     }
     return words;
@@ -32,3 +32,4 @@ function getWordsAfter(arr, val) {
 // console.log(pronoun(ex2))
 
 // console.log(pronoun('I buy,\ni to,\nYOU buy,\nit have,\nIt buys,\nit is,\nyou go'))
+// console.log(pronoun('we will rock you'))
