@@ -1,14 +1,11 @@
 function replica(...dataAll) {
     let res = {}
     dataAll.forEach(data => {
-        // console.log('data', data)
         for (let i in data) {
             if (typeof data[i] == 'object' && !Array.isArray(data[i])) {
                 if (data[i] instanceof RegExp) {
-                    // console.log('regexp', data[i])
                     res[i] = new RegExp(data[i])
                 } else {
-                    // console.log('object', data[i])
                     if (typeof res[i] == 'object' && !Array.isArray(res[i]))
                     res[i] = replica(res[i],data[i])
                     else res[i] = replica(data[i])
@@ -16,16 +13,13 @@ function replica(...dataAll) {
             }
             else {
                 if (typeof data[i] == 'function') {
-                    // console.log('function', data[i])
                     res[i] = data[i]
                     continue;
                 }
-                // console.log('number or string', data[i])
                 res[i] = data[i]
             }
         }
     });
-    // console.log('returning value', res)
     return res
 }
 
