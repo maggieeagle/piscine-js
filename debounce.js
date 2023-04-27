@@ -21,7 +21,6 @@ function opDebounce(func, delay, leading = undefined) {
         console.log('waiting')
         clearTimeout(timerId)
         timerId = setTimeout(() => {
-            timerId = null;
             if (leading == undefined) {
                 return func.apply(this, args)
             }
