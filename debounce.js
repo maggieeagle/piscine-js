@@ -12,7 +12,13 @@ function opDebounce(func, delay, leading) {
     if (leading != undefined) {
         return function (...args) {func.apply(this, args)}
     }
-    else return function (...args) {debounce(func, delay)(args)}
+    let timerId
+    return function (...args) {
+        clearTimeout(timerId)
+        timerId = setTimeout(() => {
+            func.apply(this, args)
+        }, delay);
+    }
 }
 
 // console.log(await Promise.all([
