@@ -12,12 +12,12 @@ function opDebounce(func, delay, leading = undefined) {
     let timerId
     return function (...args) {
         if (leading != undefined && !timerId) {
-            return func.apply(this, args)
+            func.apply(this, args)
         }
         clearTimeout(timerId)
         timerId = setTimeout(() => {
             if (leading == undefined) {
-                return func.apply(this, args)
+                func.apply(this, args)
             }
         }, delay);
     }
