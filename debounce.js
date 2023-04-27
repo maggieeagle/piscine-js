@@ -8,8 +8,8 @@ function debounce(func, delay) {
     }
 }
 
-function opDebounce(func, delay) {
-    if (leading == null) return debounce(func, delay)
+function opDebounce(func, delay, leading) {
+    if (leading == undefined) return debounce(func, delay)
     else return func
 }
 
