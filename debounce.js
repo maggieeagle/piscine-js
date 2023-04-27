@@ -1,9 +1,11 @@
 function debounce(func, delay) {
     let timerId
-    clearTimeout(timerId)
-    timerId = setTimeout(() => {
-        return func
-    }, delay);
+    return function (...args) {
+        clearTimeout(timerId)
+        timerId = setTimeout(() => {
+            func(...args)
+        }, delay);
+    }
 }
 
 function opDebounce(func, delay, leading = false) {
