@@ -15,7 +15,7 @@ function opDebounce(func, delay, leading = false) {
     }
 }
 
-console.log(await Promise.all([
-    run(debounce(add, 50), { delay: 100, count: 5 }),
-    run(debounce(add, 20), { delay: 50, count: 10 }),
-  ]))
+// console.log(await Promise.all([
+//     run(debounce(add, 50), { delay: 100, count: 5 }),
+//     run(debounce(add, 20), { delay: 50, count: 10 }),
+//   ]))
