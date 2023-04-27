@@ -2,13 +2,13 @@ function debounce(func, delay) {
     let timerId
     clearTimeout(timerId)
     timerId = setTimeout(() => {
-        return func
+        return func.call()
     }, delay);
 }
 
 function opDebounce(func, delay, leading = false) {
     if (!leading) debounce(func, delay)
-    else return func
+    else return func.call()
 }
 
 // console.log(await Promise.all([
