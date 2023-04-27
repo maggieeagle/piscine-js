@@ -11,15 +11,15 @@ function debounce(func, delay) {
 function opDebounce(func, delay, leading = undefined) {
     let timerId
     return function (...args) {
-        if (timerId) {
-            clearTimeout(timerId);
-        }
-        if (leading != undefined && !timerId) {
+        // if (timerId) {
+        //     clearTimeout(timerId);
+        // }
+        if (leading != undefined/* && !timerId*/) {
             func.apply(this, args)
         }
         clearTimeout(timerId)
         timerId = setTimeout(() => {
-            timerId = null;
+            // timerId = null;
             if (leading == undefined) {
                 func.apply(this, args)
             }
