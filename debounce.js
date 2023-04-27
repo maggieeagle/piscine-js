@@ -10,7 +10,7 @@ function debounce(func, delay) {
 
 function opDebounce(func, delay, leading) {
     if (leading == undefined) {
-        return func, delay
+        return func
     }
     else return debounce(func, delay)
 }
