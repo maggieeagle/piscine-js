@@ -3,7 +3,7 @@ function debounce(func, delay) {
     return function (...args) {
         clearTimeout(timerId)
         timerId = setTimeout(() => {
-            func(args)
+            func.apply(args)
         }, delay);
     }
 }
@@ -11,6 +11,11 @@ function debounce(func, delay) {
 function opDebounce(func, delay, leading = false) {
     if (!leading) debounce(func, delay)
     else return function(...args) {
-        func(args)
+        func.apply(args)
     }
 }
+
+console.log(await Promise.all([
+    run(debounce(add, 50), { delay: 100, count: 5 }),
+    run(debounce(add, 20), { delay: 50, count: 10 }),
+  ]))
