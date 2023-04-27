@@ -3,7 +3,7 @@ function debounce(func, delay) {
     return function (...args) {
         clearTimeout(timerId)
         timerId = setTimeout(() => {
-            func.apply(args)
+            func.apply(this, args)
         }, delay);
     }
 }
@@ -11,7 +11,7 @@ function debounce(func, delay) {
 function opDebounce(func, delay, leading = false) {
     if (!leading) debounce(func, delay)
     else return function(...args) {
-        func.apply(args)
+        func.apply(this, args)
     }
 }
 
