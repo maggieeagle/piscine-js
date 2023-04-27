@@ -12,11 +12,13 @@ function opDebounce(func, delay, leading) {
     let timerId
     return function (...args) {
         if (leading != undefined) {
-            return function (...args) { func.apply(this, args) }
+            console.log('not waiting')
+            return func.apply(this, args) 
         }
+        console.log('waiting')
         clearTimeout(timerId)
         timerId = setTimeout(() => {
-                func.apply(this, args)
+                return func.apply(this, args)
         }, delay);
     }
 }
@@ -26,4 +28,4 @@ function opDebounce(func, delay, leading) {
 //     run(debounce(add, 20), { delay: 50, count: 10 }),
 //   ]))
 
-opDebounce(console.log, 200, { leading: true })
+// console.log(opDebounce(console.log, 20000))
