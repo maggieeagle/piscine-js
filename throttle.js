@@ -16,27 +16,36 @@ function throttle(func, wait) {
 }
 
 function opThrottle(func, wait, options) {
-    let lastCall = 0, timerId = null
-    const defaultOptions = { leading: true, trailing: true }
-    options = Object.assign({}, defaultOptions, options)
+    let lastCall = 0, timerId = null;
+    const defaultOptions = { leading: true, trailing: true };
+    options = Object.assign({}, defaultOptions, options);
     // console.log(options)
     return function (...args) {
-        let now = Date.now()
-        let elapsed = now - lastCall
-
+      let now = Date.now();
+      let elapsed = now - lastCall;
+  
+      if (elapsed >= wait) {
+        clearTimeout(timerId);
+        lastCall = now;
+        func.apply(this, args);
+      } else {
         if (options.leading && !timerId) {
-            func.apply(this, args)
-            lastCall = now
-        } else if (options.trailing && !timerId) {
+          timerId = setTimeout(() => {
+            lastCall = now;
+            func.apply(this, args);
+            timerId = null;
+          }, wait - elapsed);
+        } else {
+          if (options.trailing && !timerId) {
             timerId = setTimeout(() => {
-                timerId = null
-                if (options.trailing && elapsed >= wait) {
-                    func.apply(this, args)
-                    lastCall = now
-                }
-            }, wait - elapsed)
+              lastCall = now;
+              func.apply(this, args);
+              timerId = null;
+            }, wait);
+          }
         }
+      }
     }
-}
+  }
 
 opThrottle(console.log, 200, { trailing: true })
