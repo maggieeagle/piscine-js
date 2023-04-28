@@ -19,8 +19,8 @@ function timeout(delay, callback) {
         let value = callback(...args)
         setTimeout(() => {
             console.log(value)
-            if (value == undefined) return value
-            else return Error('timeout')
+            if (value == undefined) return Error('timeout')
+            else return value
         }, delay);
     }
 }
