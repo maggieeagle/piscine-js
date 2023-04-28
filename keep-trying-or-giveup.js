@@ -3,9 +3,8 @@ function retry(count, callback) {
         let retries = 0
         while (retries <= count) {
             try {
-                Promise.race(await callback(args)).then((value) => {
-                    return value
-                })
+                promises = (await callback(args))
+                return Promise.race(promises)
             } catch (error) {
                 retries++
                 if (retries > count) throw new Error()
