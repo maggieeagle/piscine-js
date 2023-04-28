@@ -38,6 +38,5 @@ function opThrottle(func, wait, options) {
         }
     }
 }
-}
 
 opThrottle(console.log, 200, { trailing: true })
