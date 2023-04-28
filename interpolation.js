@@ -1,5 +1,5 @@
 function interpolation(obj, step = 0) {
-    if (step >= obj.step) {
+    if (step >= obj.end) {
         return;
     }
     const stepValue = (obj.end - obj.start) / obj.step
