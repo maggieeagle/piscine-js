@@ -3,7 +3,7 @@ function throttle(func, wait) {
     return function(...args) {
         let now = Date.now()
         if (now - lastTime <= wait) {
-            func.apply(this, ...args)
+            func.apply(this, args)
             lastTime = now
         }
     }
@@ -38,4 +38,4 @@ function opThrottle(func, wait, options) {
     }
 }
 
-opThrottle(console.log, 200, {leading: false, trailing: true})
+opThrottle(console.log, 200, {leading: true, trailing: false})
