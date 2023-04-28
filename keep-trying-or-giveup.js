@@ -3,11 +3,15 @@ function retry(count, callback) {
         let retries = 0
         while (retries <= count) {
             try {
-                return await callback(args)
+                return callback(args)
             } catch (error) {
                 retries++
                 if (retries > count) throw new Error()
             }
         }
     }
+}
+
+function timeout(delay, callback) {
+
 }
