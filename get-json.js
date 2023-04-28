@@ -7,7 +7,7 @@ function getJSON(path, params) {
         return response.json();
       })
       .then(data => {
-        return await data.json();
+        return data.json();
       })
       .catch(error => {
         return {'error': error}
