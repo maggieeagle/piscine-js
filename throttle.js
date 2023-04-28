@@ -16,41 +16,49 @@ function throttle(func, wait) {
 }
 
 function opThrottle(func, wait, options) {
-    let lastCall = 0, timerId = null, lastArgs = null;
+    let lastCall = 0, timerId = null;
     const defaultOptions = { leading: false, trailing: false };
     options = Object.assign({}, defaultOptions, options);
     // console.log(options)
     return function (...args) {
-        let now = Date.now();
-        let elapsed = now - lastCall;
-
-        if (elapsed >= wait) {
-            clearTimeout(timerId);
+      let now = Date.now();
+      let elapsed = now - lastCall;
+  
+      if (elapsed >= wait || (options.trailing && !timerId)) {
+        clearTimeout(timerId);
+        lastCall = now;
+        func.apply(this, args);
+        if (options.trailing) {
+          timerId = setTimeout(() => {
             lastCall = now;
             func.apply(this, args);
-            lastArgs = null;
-        } else {
-            if (options.leading && lastCall === 0) {
-                lastCall = now;
-                func.apply(this, args);
-                lastArgs = null;
-            }
-            if (options.trailing) {
-                lastArgs = args;
-                if (!timerId) {
-                    timerId = setTimeout(() => {
-                        lastCall = Date.now();
-                        func.apply(this, lastArgs);
-                        lastArgs = null;
-                        timerId = null;
-                    }, wait - elapsed);
-                }
-            }
-            else {
-                lastArgs = args;
-            }
+            timerId = null;
+          }, wait);
         }
+      } else {
+        if (options.leading && !timerId) {
+          lastCall = now;
+          elapsed = now - lastCall;
+          func.apply(this, args);
+          if (options.trailing) {
+            timerId = setTimeout(() => {
+              lastCall = now;
+              func.apply(this, args);
+              timerId = null;
+            }, wait);
+          }
+        } else {
+          if (options.trailing && !timerId) {
+            timerId = setTimeout(() => {
+              lastCall = now;
+              elapsed = now - lastCall;
+              func.apply(this, args);
+              timerId = null;
+            }, wait-elapsed);
+          }
+        }
+      }
     }
-}
+  }
 
 opThrottle(console.log, 200, { trailing: true })
