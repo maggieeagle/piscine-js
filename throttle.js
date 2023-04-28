@@ -22,9 +22,9 @@ function opThrottle(func, wait, options) {
     // console.log(options)
     return function (...args) {
         let now = Date.now();
-        let elapsed = now - lastCall;
+        let elapsed = now - (lastCall+wait);
 
-        if (elapsed >= wait) {
+        if (elapsed >= 0) {
             clearTimeout(timerId);
             lastCall = now;
             func.apply(this, args);
@@ -33,30 +33,22 @@ function opThrottle(func, wait, options) {
                     lastCall = now;
                     func.apply(this, args);
                     timerId = null;
-                }, wait);
+                }, wait-elapsed);
             }
         } else {
-            if (options.leading && !timerId) {
+            if (options.leading && lastCall === 0) {
                 lastCall = now;
-                elapsed = now - lastCall;
                 func.apply(this, args);
-                if (options.trailing) {
-                    timerId = setTimeout(() => {
-                        lastCall = now;
-                        func.apply(this, args);
-                        timerId = null;
-                    }, wait);
-                }
-            } else {
+            } 
                 if (options.trailing && !timerId) {
                     timerId = setTimeout(() => {
                         lastCall = now;
-                        elapsed = now - lastCall;
+                        elapsed = now - (lastCall+wait);
                         func.apply(this, args);
                         timerId = null;
                     }, wait-elapsed);
                 }
-            }
+            
         }
     }
 }
