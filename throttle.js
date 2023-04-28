@@ -10,7 +10,7 @@ function throttle(func, wait) {
 }
 
 function opThrottle(func, wait, options = {}) {
-    let lastCall, timerId
+    let lastCall = 0, timerId
     let {leading = true, trailing = true} = options
     return function(...args) {
         let now = Date.now()
