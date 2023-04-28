@@ -19,7 +19,7 @@ function timeout(delay, callback) {
         let value = await callback(...args)
         setTimeout(() => {
             console.log(value)
-            if (value == undefined) value =  Error('timeout')
+            if (value == undefined) value =  new Error('timeout')
         }, delay);
         return value
     }
