@@ -26,7 +26,7 @@ function opThrottle(func, wait, options) {
 
         if (options.leading && !timerId) {
             func.apply(this, args)
-            lastCall = now()
+            lastCall = now
         } else if (options.trailing && !timerId) {
             timerId = setTimeout(() => {
                 timerId = null
