@@ -9,9 +9,10 @@ function throttle(func, wait) {
     }
 }
 
-function opThrottle(func, wait, options = {}) {
+function opThrottle(func, wait, options) {
     let lastCall = 0, timerId = null
-    let {leading = true, trailing = true} = options
+    if (options == undefined) options = {leading: true, trailing: true}
+    console.log(options)
     return function(...args) {
         let now = Date.now()
 
@@ -37,4 +38,4 @@ function opThrottle(func, wait, options = {}) {
     }
 }
 
-opThrottle(console.log, 200, {leading: false, trailing: false})
+opThrottle(console.log, 200, {leading: false, trailing: true})
