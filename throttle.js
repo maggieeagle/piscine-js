@@ -11,7 +11,7 @@ function throttle(func, wait) {
 
 function opThrottle(func, wait, options = {}) {
     let lastCall, timerId
-    const {leading = true, trailing = true} = options
+    let {leading = true, trailing = true} = options
     return function(...args) {
         let now = Date.now()
 
@@ -19,7 +19,7 @@ function opThrottle(func, wait, options = {}) {
             func.apply(this, args)
             lastCall = now
         } else {
-            timeLeft = wait - (now - lastCall)
+            let timeLeft = wait - (now - lastCall)
 
             if (timeLeft < 0) {
                 clearTimeout(timerId)
@@ -36,3 +36,5 @@ function opThrottle(func, wait, options = {}) {
         }
     }
 }
+
+opThrottle(console.log, 200, {leading: false, trailing: false})
