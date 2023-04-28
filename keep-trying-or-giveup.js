@@ -3,7 +3,7 @@ function retry(count, callback) {
         let retries = 0
         while (retries <= count) {
             try {
-                return callback(args)
+                return callback(args)[0]
             } catch (error) {
                 retries++
                 if (retries > count) throw new Error()
