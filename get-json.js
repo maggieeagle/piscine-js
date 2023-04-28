@@ -1,4 +1,5 @@
 async function getJSON(path, params) {
+    console.log(path)
     const url = new URL(path);
     Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, value))
     // const response = await fetch(path)
