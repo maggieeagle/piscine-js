@@ -4,7 +4,7 @@ function retry(count, callback) {
         while (retries <= count) {
             try {
                 let value = await callback(...args)
-                // console.log(value)
+                console.log(value)
                 return value
             } catch (error) {
                 if (retries > count) throw Promise.reject('Error')
