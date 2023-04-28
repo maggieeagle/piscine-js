@@ -15,8 +15,7 @@ function throttle(func, wait) {
     }
 }
 
-const opThrottle = (func, delay, options = { leading: true, trailing: false }) => {
-    if (options == undefined) options = {leading: true, trailing: true}
+const opThrottle = (func, delay, options = { leading: false, trailing: false }) => {
     let timer = null,
       lastRan = null,
       trailingArgs = null;
@@ -50,3 +49,5 @@ const opThrottle = (func, delay, options = { leading: true, trailing: false }) =
       timer = setTimeout(coolDownPeriodComplete, delay);
     }
   }
+
+  opThrottle(console.log, 200)
