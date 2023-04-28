@@ -1,13 +1,13 @@
 function retry(count, callback) {
     return async function (...args) {
         let retries = 0
-        while (retries <= count) {
+        while (retries <= count+1) {
             try {
                 let value = await callback(...args)
                 console.log(value)
                 return value
             } catch (error) {
-                if (retries > count) throw Error('Error')
+                if (retries >= count) throw Error('Error')
                 retries++
             }
         }
