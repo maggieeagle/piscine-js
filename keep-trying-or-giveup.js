@@ -7,7 +7,7 @@ function retry(count, callback) {
                 console.log(value)
                 return value
             } catch (error) {
-                if (retries > count) throw Promise.reject('Error')
+                if (retries > count+1) throw Promise.reject('Error')
                 retries++
             }
         }
