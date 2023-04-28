@@ -1,7 +1,8 @@
 async function getJSON(path, params) {
     console.log(path)
-    const url = new URL(path);
-    Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, value))
+    let url = path
+    url += '?'
+    Object.entries(params).forEach(([key, value]) => url += key + '=' + value + '&')
     // const response = await fetch(path)
 
     // if (!response.ok)
@@ -9,7 +10,7 @@ async function getJSON(path, params) {
 
     // return await response.json()
 
-    return fetch(url.toString())
+    return fetch(url)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);
