@@ -1,16 +1,24 @@
 async function getJSON(path, params) {
-    path = appendQuery(path, params)
-    const response = await fetch(path)
+    const url = new URL(path);
+    Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, value))
+    // const response = await fetch(path)
 
-    if (!response.ok)
+    // if (!response.ok)
+    //     throw new Error(response.statusText);
+
+    // return await response.json()
+
+    return fetch(url.toString())
+    .then(response => {
+      if (!response.ok) {
         throw new Error(response.statusText);
-
-    return await response.json()
-}
-
-function appendQuery(url, params) {
-    Object.entries(params).forEach(([key, value]) => {
-        new URL(url).searchParams.set(key, value);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.error) {
+        throw new Error(data.error);
+      }
+      return data.data;
     });
-    return url
 }
