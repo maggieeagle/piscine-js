@@ -10,7 +10,7 @@ async function getJSON(path, params) {
 
 function appendQuery(url, params) {
     Object.entries(params).forEach(([key, value]) => {
-        url.searchParams.set(key, value);
+        new URL(url).searchParams.set(key, value);
     });
     return url
 }
