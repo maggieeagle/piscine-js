@@ -18,6 +18,8 @@ function throttle(func, wait) {
 function opThrottle(func, wait, options) {
     let lastCall = 0, timerId = null
     if (options == undefined) options = {leading: true, trailing: true}
+    if (options.leading == undefined) options.leading = true
+    if (options.trailing == undefined) options.trailing = true
     console.log(options)
     return function(...args) {
         let now = Date.now()
@@ -44,4 +46,4 @@ function opThrottle(func, wait, options) {
     }
 }
 
-opThrottle(console.log, 200, {leading: true, trailing: false})
+opThrottle(console.log, 200, {trailing: false})
