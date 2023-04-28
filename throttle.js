@@ -52,7 +52,7 @@ function opThrottle(func, wait, options) {
                         lastCall = now;
                         func.apply(this, args);
                         timerId = null;
-                    }, wait - elapsed);
+                    }, wait);
                 }
             }
         }
