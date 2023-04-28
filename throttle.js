@@ -22,34 +22,22 @@ function opThrottle(func, wait, options) {
     // console.log(options)
     return function (...args) {
         let now = Date.now()
+        let elapsed = now - lastCall
 
         if (options.leading && !timerId) {
             func.apply(this, args)
-            lastCall = now
+            lastCall = now()
+        } else if (options.trailing && !timerId) {
             timerId = setTimeout(() => {
                 timerId = null
-                if (options.trailing) {
-                  func(...args)
-                  lastCall = Date.now()
-                }
-              }, wait)
-        } else {
-            let timeLeft = wait - (now - lastCall)
-
-            if (timeLeft < 0) {
-                clearTimeout(timerId)
-                timerId = null
-                func.apply(this, args)
-                lastCall = now
-            } else if (options.trailing && !timerId) {
-                timerId = setTimeout(() => {
+                if (options.trailing && elapsed >= wait) {
                     func.apply(this, args)
-                    lastCall = Date.now()
-                    timerId = null
-                }, timeLeft)
-            }
+                    lastCall = now
+                }
+            }, wait - elapsed)
         }
     }
+}
 }
 
 opThrottle(console.log, 200, { trailing: true })
