@@ -5,6 +5,12 @@ function throttle(func, wait) {
         if (now - lastTime >= wait) {
             func.apply(this, args)
             lastTime = now
+        } else {
+            clearTimeout(timerId)
+            timerId = setTimeout(() => {
+                func.apply(this, args)
+                lastCall = Date.now()
+            }, wait - (now - lastTime))
         }
     }
 }
