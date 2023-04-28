@@ -15,42 +15,39 @@ function throttle(func, wait) {
     }
 }
 
-function opThrottle(func, wait, options) {
-    let lastCall = 0, timerId = null, lastArgs = null;
-    const defaultOptions = { leading: true, trailing: false };
-    options = Object.assign({}, defaultOptions, options);
-    // console.log(options)
+const advThrottle = (func, delay, options = { leading: true, trailing: false }) => {
+    let timer = null,
+      lastRan = null,
+      trailingArgs = null;
+  
     return function (...args) {
-        let now = Date.now();
-        let elapsed = now - lastCall;
-
-        if (elapsed >= wait) {
-            clearTimeout(timerId);
-            lastCall = now;
-            func.apply(this, args);
-            lastArgs = null;
+  
+      if (timer) {
+        lastRan = this;
+        trailingArgs = args;
+        return;
+      } 
+  
+      if (options.leading) {
+        func.call(this, ...args)
+      } else {
+        lastRan = this;
+        trailingArgs = args
+      }
+  
+      const coolDownPeriodComplete = () => {
+        if (options.trailing && trailingArgs) {
+          func.call(lastRan, ...trailingArgs);
+          lastRan = null;
+          trailingArgs = null;
+          timer = setTimeout(coolDownPeriodComplete, delay)
         } else {
-            if (options.leading && lastCall === 0) {
-                lastCall = now;
-                func.apply(this, args);
-                lastArgs = null;
-            }
-            if (options.trailing) {
-                lastArgs = args;
-                if (!timerId) {
-                    timerId = setTimeout(() => {
-                        lastCall = Date.now();
-                        func.apply(this, lastArgs);
-                        lastArgs = null;
-                        timerId = null;
-                    }, wait - elapsed);
-                }
-            }
-            else {
-                lastArgs = args;
-            }
+          timer = null;
         }
+      }
+  
+      timer = setTimeout(coolDownPeriodComplete, delay);
     }
-}
+  }
 
-opThrottle(console.log, 200, { trailing: true })
+// opThrottle(console.log, 200, { trailing: true })
