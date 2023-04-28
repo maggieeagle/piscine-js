@@ -1,5 +1,5 @@
 function retry(count, callback) {
-    return function(...args) {
+    return async function(...args) {
         let retries = 0
         while (retries <= count) {
             try {
