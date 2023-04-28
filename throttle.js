@@ -50,5 +50,3 @@ const opThrottle = (func, delay, options = { leading: true, trailing: false }) =
       timer = setTimeout(coolDownPeriodComplete, delay);
     }
   }
-
-// opThrottle(console.log, 200, { trailing: true })
