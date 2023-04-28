@@ -38,6 +38,7 @@ function opThrottle(func, wait, options) {
         } else {
             if (options.leading && !timerId) {
                 lastCall = now;
+                elapsed = now - lastCall;
                 func.apply(this, args);
                 if (options.trailing) {
                     timerId = setTimeout(() => {
@@ -50,9 +51,10 @@ function opThrottle(func, wait, options) {
                 if (options.trailing && !timerId) {
                     timerId = setTimeout(() => {
                         lastCall = now;
+                        elapsed = now - lastCall;
                         func.apply(this, args);
                         timerId = null;
-                    }, wait);
+                    }, wait-elapsed);
                 }
             }
         }
