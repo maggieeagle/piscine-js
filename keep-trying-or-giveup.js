@@ -3,11 +3,11 @@ function retry(count, callback) {
         let retries = 0
         while (retries <= count) {
             try {
-                const [value] = await callback(args)
+                const [value] = await callback(...args)
                 return value
             } catch (error) {
                 retries++
-                if (retries > count+1) throw new Error('Error')
+                if (retries > count) throw new Error('Error')
             }
         }
     }
