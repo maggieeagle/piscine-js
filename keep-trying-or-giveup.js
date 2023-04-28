@@ -16,11 +16,14 @@ function retry(count, callback) {
 
 function timeout(delay, callback) {
     return async function (...args) {
-        let value = await callback(...args)
-        setTimeout(() => {
-            console.log(value)
-            if (value == undefined) value =  new Error('timeout')
-        }, delay);
+        let value = await Promise.race([
+            callback(...args),
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                reject(new Error('timeout'))
+              }, delay);
+            })
+          ]);
         return value
     }
 }
