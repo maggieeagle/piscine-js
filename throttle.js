@@ -9,7 +9,7 @@ function throttle(func, wait) {
             clearTimeout(timerId)
             timerId = setTimeout(() => {
                 func.apply(this, args)
-                lastCall = Date.now()
+                lastTime = Date.now()
             }, wait - (now - lastTime))
         }
     }
