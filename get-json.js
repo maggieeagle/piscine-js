@@ -5,7 +5,7 @@ function getJSON(path, params) {
     if (!response.ok)
         throw new Error(response.statusText);
 
-    return await.response.json
+    return await response.json()
 }
 
 function appendQuery(url, params) {
