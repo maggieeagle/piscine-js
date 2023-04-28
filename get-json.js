@@ -1,17 +1,11 @@
 function getJSON(path, params) {
     path = appendQuery(path, params)
-    const response = await fetch(url).then(response => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then(data => {
-        return data.json();
-      })
-      .catch(error => {
-        return {'error': error}
-      });
+    const response = await fetch(url)
+
+    if (!response.ok)
+        throw new Error(response.statusText);
+
+    return await.response.json
 }
 
 function appendQuery(url, params) {
