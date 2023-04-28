@@ -1,5 +1,5 @@
 function throttle(func, wait) {
-    let lastTime = 0
+    let lastTime = 0, timerId
     return function(...args) {
         let now = Date.now()
         if (now - lastTime >= wait) {
