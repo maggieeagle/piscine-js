@@ -3,7 +3,8 @@ async function retry(count, callback) {
         let retries = 0
         while (retries <= count) {
             try {
-                return callback(args).then((value) => {return value})
+                const [value] = await callback(args)
+                return value
             } catch (error) {
                 retries++
                 if (retries > count) throw new Error()
