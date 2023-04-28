@@ -1,6 +1,6 @@
-function getJSON(path, params) {
+async function getJSON(path, params) {
     path = appendQuery(path, params)
-    const response = await fetch(url)
+    const response = await fetch(path)
 
     if (!response.ok)
         throw new Error(response.statusText);
@@ -12,4 +12,5 @@ function appendQuery(url, params) {
     Object.entries(params).forEach(([key, value]) => {
         url.searchParams.set(key, value);
     });
+    return url
 }
