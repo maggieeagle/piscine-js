@@ -17,7 +17,7 @@ function throttle(func, wait) {
 
 function opThrottle(func, wait, options) {
     let lastCall = 0, timerId = null;
-    const defaultOptions = { leading: true, trailing: true };
+    const defaultOptions = { leading: false, trailing: false };
     options = Object.assign({}, defaultOptions, options);
     // console.log(options)
     return function (...args) {
