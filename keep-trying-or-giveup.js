@@ -6,8 +6,8 @@ function retry(count, callback) {
                 const value = await callback(...args)
                 return value
             } catch (error) {
-                retries++
                 if (retries > count) throw new Error('Error')
+                retries++
             }
         }
     }
