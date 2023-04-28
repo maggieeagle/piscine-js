@@ -16,12 +16,11 @@ function retry(count, callback) {
 
 function timeout(delay, callback) {
     return async function (...args) {
-                let value = callback(...args)
-                setTimeout(() => {
-                    console.log(value)
-                    if (value == undefined) return value
-                    else return Error('timeout')
-                }, delay);
-        }
+        let value = callback(...args)
+        setTimeout(() => {
+            console.log(value)
+            if (value == undefined) return value
+            else return Error('timeout')
+        }, delay);
     }
 }
