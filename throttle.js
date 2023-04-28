@@ -22,7 +22,7 @@ function opThrottle(func, wait, options) {
     return function(...args) {
         let now = Date.now()
 
-        if (leading && !timerId) {
+        if (options.leading && !timerId) {
             func.apply(this, args)
             lastCall = now
         } else {
@@ -33,7 +33,7 @@ function opThrottle(func, wait, options) {
                 timerId = null
                 func.apply(this, args)
                 lastCall = now
-            } else if(trailing && !timerId) {
+            } else if(options.trailing && !timerId) {
                 timerId = setTimeout(() => {
                     func.apply(this, args)
                     lastCall = Date.now()
