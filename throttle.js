@@ -1,6 +1,6 @@
 function throttle(func, wait) {
     let lastTime = 0, timerId
-    return function(...args) {
+    return function (...args) {
         let now = Date.now()
         if (now - lastTime >= wait) {
             func.apply(this, args)
@@ -17,11 +17,10 @@ function throttle(func, wait) {
 
 function opThrottle(func, wait, options) {
     let lastCall = 0, timerId = null
-    if (options == undefined) options = {leading: true, trailing: true}
-    if (options.leading == undefined) options.leading = true
-    if (options.trailing == undefined) options.trailing = true
-    console.log(options)
-    return function(...args) {
+    const defaultOptions = { leading: true, trailing: true }
+    options = Object.assign({}, defaultOptions, options)
+    // console.log(options)
+    return function (...args) {
         let now = Date.now()
 
         if (options.leading && !timerId) {
@@ -35,7 +34,7 @@ function opThrottle(func, wait, options) {
                 timerId = null
                 func.apply(this, args)
                 lastCall = now
-            } else if(options.trailing && !timerId) {
+            } else if (options.trailing && !timerId) {
                 timerId = setTimeout(() => {
                     func.apply(this, args)
                     lastCall = Date.now()
@@ -46,4 +45,4 @@ function opThrottle(func, wait, options) {
     }
 }
 
-opThrottle(console.log, 200, {trailing: false})
+opThrottle(console.log, 200, { trailing: true })
