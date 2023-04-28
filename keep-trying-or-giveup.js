@@ -7,7 +7,7 @@ function retry(count, callback) {
                 return value
             } catch (error) {
                 retries++
-                if (retries > count+1) throw new Error('Error')
+                if (retries > count+1) throw Error('Error')
             }
         }
     }
