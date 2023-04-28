@@ -2,7 +2,7 @@ async function getJSON(path, params) {
     console.log(path)
     let url = path
     url += '?'
-    Object.entries(params).forEach(([key, value]) => url += key + '=' + value.replace('_', '+') + '&')
+    Object.entries(params).forEach(([key, value]) => url += key + '=' + value.toString().replace('_', '+') + '&')
     url = url.slice(0, -1)
     // const response = await fetch(path)
 
