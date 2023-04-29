@@ -1,7 +1,8 @@
 function series(asyncFunctions) {
     let res = []
     asyncFunctions.forEach(func => {
-        res.push(func)
+        let output = await func()
+        res.push(output)
     });
     return res
 }
