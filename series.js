@@ -1,8 +1,7 @@
-function series(asyncFunctions) {
-    let res = []
-    asyncFunctions.forEach(func => {
-        let output = func()
-        res.push(output)
-    });
-    return res
-}
+async function series(asyncFunctions) {
+    let promises = asyncFunctions.map(func => func());
+    let results = await Promise.all(promises);
+    return results;
+  }
+
+// console.log(awaitseries([() => Promise.resolve(1), () => Promise.resolve(true)]))
