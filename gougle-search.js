@@ -3,7 +3,8 @@ async function queryServers(serverName, q) {
     const urlBackup = '/' + serverName + '_backup?q=' + q
     return Promise.all([getJSON(url), getJSON(urlBackup)])
     .then(([data, dataBackup]) => {
-      if (data.response_time < dataBackup.response_time) {
+        console.log(data.response_time, dataBackup.response_time)
+      if (data.response_time <= dataBackup.response_time) {
         return data;
       } else {
         return dataBackup;
