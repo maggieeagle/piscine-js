@@ -13,13 +13,22 @@ async function some(promises, count) {
     // for (let i = 0; i < count; i++) {
     //     res.push(race([promises[i]]))
     // }
-    let all = await Promise.all(promises)
-    console.log(all)
-    return all.slice(0, count)
+
+    // let all = await Promise.all(promises)
+    // console.log(all)
+    // return all.slice(0, count)
+    let results = []
+
+    while (results.length < count) {
+        let result = await Promise.race(promises);
+        results.push(result);
+        promises = promises.filter((p) => p !== result);
+    }
+    return results
 }
 
 const promise = new Promise((resolve, reject) => {
     // This promise will never resolve because the resolve function is never called
-  });
+});
 
-console.log(some([Promise.resolve(2), Promise.resolve(2), promise]))
+console.log(some([Promise.resolve(2), Promise.resolve(2), promise], 2))
