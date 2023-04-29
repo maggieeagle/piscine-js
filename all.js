@@ -1,13 +1,11 @@
-function all(object) {
-    if (Object.entries(object).length == 0) return {}
-    const keys = Object.keys(object);
-    const values = Object.values(object);
-
-    let resolved = Object.entries(object).map(([key, value]) => {
+function all(obj) {
+    if (Object.entries(obj).length == 0) return {}
+    let resolved = Object.entries(obj).map(([key, value]) => {
         let newKey, newValue
-        if (key instanceof Promise) newKey = key.then(function(result){return result.then((v) => {return v})})
-        else newKey = key
-        if (value instanceof Promise) newValue = value.then(function(result){return result.then((v) => {return v})})
+        // if (key instanceof Promise) newKey = key.then(function(result){return result})
+        /* else*/ newKey = key
+        console.log(value instanceof Promise)
+        if (value instanceof Promise) newValue = value.then(function(result){return result})
         else newValue = value
         return [newKey, newValue]
     })
