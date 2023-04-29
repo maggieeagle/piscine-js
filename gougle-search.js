@@ -1,7 +1,7 @@
 async function queryServers(serverName, q) {
     const url = '/' + serverName + '?q=' + q
     const urlBackup = '/' + serverName + '_backup?q=' + q
-    return await Promise.all([getJSON(url), getJSON(urlBackup)]);
+    return await Promise.race([getJSON(url), getJSON(urlBackup)]);
 }
 
 async function gougleSearch(q) {
