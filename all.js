@@ -5,9 +5,9 @@ function all(object) {
 
     let resolved = Object.entries(object).map(([key, value]) => {
         let newKey, newValue
-        if (key instanceof Promise) newKey = key.then(function(result){return result})
+        if (key instanceof Promise) newKey = key.then(function(result){return result.value})
         else newKey = key
-        if (value instanceof Promise) newValue = value.then(function(result){return result})
+        if (value instanceof Promise) newValue = value.then(function(result){return result.value})
         else newValue = value
         return [newKey, newValue]
     })
