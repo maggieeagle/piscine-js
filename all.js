@@ -6,7 +6,10 @@
 //         /* else*/ newKey = key
 //         console.log(value instanceof Promise)
 //         if (value instanceof Promise) {
-//             newValue = resolveValue(value)
+//             return value.then(function (result) {
+//                 console.log('result', result)
+//                 return result
+//             })
 //         }
 //         else newValue = value
 //         return [newKey, newValue]
@@ -14,26 +17,29 @@
 // }
 
 // async function resolveValue(value) {
-//     return value.then(function (result) {
-//         console.log('result', result)
-//         return result
-//     })
+    
 // }
 
-// console.log(all({
-//     a: Promise.resolve(1),
-//     b: Promise.resolve(true),
-// }))
+console.log(all({
+    a: 1,
+    b: Promise.resolve(true),
+}))
 
 function all(obj) {
-    if (Object.entries(obj).length == 0) return {}
-    const keys = Object.keys(obj);
-    const promises = keys.map(key => obj[key]);
-    return Promise.all(promises).then(results => {
-      return keys.reduce((acc, key, index) => {
-        acc[key] = results[index];
-        return acc;
-      }, {});
-    });
+    return resolve(obj).then((result) => {
+        console.log(result); // { a: 1, b: true }
+        return result
+      });
   }
-  
+
+async function resolve(obj) {
+    const promises = Object.values(obj);
+    const keys = Object.keys(obj);
+    return Promise.all(promises).then((resolvedValues) => {
+      const result = {};
+      for (let i = 0; i < keys.length; i++) {
+        result[keys[i]] = resolvedValues[i];
+      }
+      return result;
+    });
+}
