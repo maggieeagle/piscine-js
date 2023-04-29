@@ -26,6 +26,7 @@ console.log(all({
 }))
 
 function all(obj) {
+    if (Object.entries(obj).length == 0) return {}
     return resolve(obj).then((result) => {
         console.log(result); // { a: 1, b: true }
         return result
