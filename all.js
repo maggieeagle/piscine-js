@@ -26,6 +26,7 @@
 // }))
 
 function all(obj) {
+    if (Object.entries(obj).length == 0) return {}
     const keys = Object.keys(obj);
     const promises = keys.map(key => obj[key]);
     return Promise.all(promises).then(results => {
