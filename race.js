@@ -10,7 +10,8 @@ async function some(promises, count) {
     if (promises == [] || count == 0) return undefined
     let res = []
     for (let i = 0; i < count; i++) {
-        res.push(race(promises))
+        let first = race(promises)
+        res.push(first)
         promises.splice(promises.indexOf(first, 1))
     }
     return res
