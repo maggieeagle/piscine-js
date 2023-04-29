@@ -7,14 +7,13 @@ async function race(promises) {
 }
 
 async function some(promises, count) {
-    if (promises.length == 0 || count == 0) []
-    let res = []
-    for (let i = 0; i < count; i++) {
-        let first = await race(promises)
-        res.push(first)
-        promises.splice(promises.indexOf(first, 1))
-    }
-    return res
+    if (promises.length == 0 || count == 0) return []
+    // let res = []
+    // console.log(typeof promises)
+    // for (let i = 0; i < count; i++) {
+    //     res.push(race([promises[i]]))
+    // }
+    return await race(promises.slice(0, count-1))
 }
 
-console.log(some([], 10))
+// console.log(some([Promise.resolve(2), 1], 10))
