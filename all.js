@@ -8,7 +8,7 @@ function all(object) {
         if (key instanceof Promise) newKey = Promise.resolve(key)
         else newKey = key
         if (value instanceof Promise) newValue = Promise.resolve(value)
-        else newKey = key
+        else newValue = value
         return [newKey, newValue]
     })
     return Object.fromEntries(resolved)
