@@ -16,7 +16,7 @@ function getFastestJSON(url, urlBackup) {
     const time1 = endTime1 - startTime1;
     const time2 = endTime2 - startTime2;
 
-    return time1 < time2 ? promise1 : promise2;
+    return time1 <= time2 ? promise1 : promise2;
 }
 
 async function gougleSearch(q) {
