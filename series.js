@@ -3,4 +3,5 @@ function series(asyncFunctions) {
     asyncFunctions.forEach(func => {
         res.push(func)
     });
+    return res
 }
