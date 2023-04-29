@@ -19,16 +19,16 @@ async function some(promises, count) {
     // return all.slice(0, count)
     let results = []
 
-    let settled = 0;
+    let indexes = promises.map((_, i) => i); // store the original indexes
 
-    for (let i = 0; i < promises.length; i++) {
-      let result = await Promise.race([promises[i], new Promise((resolve) => setTimeout(resolve, 0))]);
-      if (result !== undefined) {
-        results.push(result);
-        settled++;
-        if (settled >= count) break;
-      }
+    while (results.length < count) {
+      let index = await Promise.race(indexes.map((i) => promises[i].then(() => i)));
+      results.push(await promises[index]);
+      indexes = indexes.filter((i) => i !== index);
     }
+  
+    results.sort((a, b) => promises.indexOf(a) - promises.indexOf(b)); // sort by original index
+    console.log(results);
     return results
 }
 
