@@ -13,12 +13,13 @@ async function some(promises, count) {
     // for (let i = 0; i < count; i++) {
     //     res.push(race([promises[i]]))
     // }
-    let all = await race(promises)
-    const resolved= all
-    .filter(result => result.status === 'fulfilled')
-    .map(result => result.value)
-    .slice(0, n);
-    return resolved
+    let all = await Promise.all(promises)
+    console.log(all)
+    return all.slice(0, count)
 }
 
-// console.log(some([Promise.resolve(2), 1], 10))
+const promise = new Promise((resolve, reject) => {
+    // This promise will never resolve because the resolve function is never called
+  });
+
+console.log(some([Promise.resolve(2), Promise.resolve(2), promise]))
