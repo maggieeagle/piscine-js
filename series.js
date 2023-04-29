@@ -1,5 +1,5 @@
 async function series(asyncFunctions) {
-    let promises = asyncFunctions.map(func => func());
+    let promises = asyncFunctions.map(func => await func());
     let results = await Promise.all(promises);
     return results;
   }
