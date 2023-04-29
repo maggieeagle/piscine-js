@@ -8,6 +8,7 @@ async function isWinner(country) {
       if (countryResults.length < 3) {
         return `${country} is not what we are looking for because of the number of times it was champion`
       }
+      console.log(countryResults.length)
       const years = countryResults.map((result) => result.year).join(', ')
       const results = countryResults.map((result) => result.score).join(', ')
       return `${country} won the FIFA World Cup in ${years} winning by ${results}`
