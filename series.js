@@ -1,8 +1,9 @@
 async function series(asyncFunctions) {
-    let promises = asyncFunctions.map(func => {
-        let value = await func()
-        return value
-    });
+    const promises = [];
+    for (const func of asyncFunctions) {
+        const result = await func();
+        promises.push(result);
+    }
     let results = await Promise.all(promises);
     return results;
 }
