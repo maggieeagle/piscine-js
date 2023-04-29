@@ -7,10 +7,10 @@ async function race(promises) {
 }
 
 async function some(promises, count) {
-    if (promises.length == 0 || count == 0) return
+    if (promises.length == 0 || count == 0) []
     let res = []
     for (let i = 0; i < count; i++) {
-        let first = race(promises)
+        let first = await race(promises)
         res.push(first)
         promises.splice(promises.indexOf(first, 1))
     }
