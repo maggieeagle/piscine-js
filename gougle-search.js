@@ -19,7 +19,7 @@ function getFastestJSON(url, urlBackup) {
     return time1 < time2 ? promise1 : promise2;
   }
 
-function gougleSearch(q) {
+async function gougleSearch(q) {
     let web = await Promise.race([
         queryServers('web', q),
         new Promise((resolve, reject) => {
