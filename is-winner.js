@@ -1,6 +1,6 @@
 async function isWinner(country) {
     try {
-    let countryInfo = await db.getWinner(str);
+    let countryInfo = await db.getWinner(country);
     if (countryInfo.continent !== 'Europe') {
         return `${country} is not what we are looking for because of the continent`
       }
