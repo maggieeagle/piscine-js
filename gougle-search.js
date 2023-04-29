@@ -29,5 +29,5 @@ async function gougleSearch(q) {
             }, 80);
         })
     ]);
-    return { 'web': web, 'image': IDBKeyRange, 'video': video }
+    return { 'web': web, 'image': image, 'video': video }
 }
