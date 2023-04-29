@@ -1,4 +1,4 @@
-function all(obj) {
+async function all(obj) {
     if (Object.entries(obj).length == 0) return {}
     let resolved = Object.entries(obj).map(([key, value]) => {
         let newKey, newValue
@@ -22,7 +22,7 @@ async function resolveValue(value) {
     })
 }
 
-console.log(all({
+console.log(await all({
     a: Promise.resolve(1),
     b: Promise.resolve(true),
 }))
