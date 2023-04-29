@@ -5,18 +5,24 @@ function all(obj) {
         // if (key instanceof Promise) newKey = key.then(function(result){return result})
         /* else*/ newKey = key
         console.log(value instanceof Promise)
-        if (value instanceof Promise) newValue = value.then(function(result){return result})
+        if (value instanceof Promise) {
+            newValue = await resolveValue(value)
+        }
         else newValue = value
         return [newKey, newValue]
     })
     return Object.fromEntries(resolved)
 
-
-    // return Promise.all(values).then((resolvedValues) => {
-    //   const resolvedObject = {};
-    //   for (let i = 0; i < keys.length; i++) {
-    //     resolvedObject[keys[i]] = resolvedValues[i];
-    //   }
-    //   return resolvedObject;
-    // });
 }
+
+async function resolveValue(value) {
+    return value.then(function (result) {
+        console.log('result', result)
+        return result
+    })
+}
+
+console.log(all({
+    a: Promise.resolve(1),
+    b: Promise.resolve(true),
+}))
