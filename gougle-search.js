@@ -14,7 +14,7 @@ async function gougleSearch(q) {
         })
     ]);
     let image = await Promise.race([
-        queryServers('web', q),
+        queryServers('image', q),
         new Promise((resolve, reject) => {
             setTimeout(() => {
                 reject(new Error('timeout'))
@@ -22,7 +22,7 @@ async function gougleSearch(q) {
         })
     ]);
     let video = await Promise.race([
-        queryServers('web', q),
+        queryServers('video', q),
         new Promise((resolve, reject) => {
             setTimeout(() => {
                 reject(new Error('timeout'))
