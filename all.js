@@ -1,4 +1,5 @@
 function all(object) {
+    if (Object.entries(object).length == 0) return {}
     const keys = Object.keys(object);
     const values = Object.values(object);
   
