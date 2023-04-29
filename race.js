@@ -27,7 +27,7 @@ async function some(promises, count) {
       indexes = indexes.filter((i) => i !== index);
     }
   
-    results.sort((a, b) => promises.indexOf(a) - promises.indexOf(b)); // sort by original index
+    results.sort((a, b) => promises.indexOf(b) - promises.indexOf(a)); // sort by original index
     console.log(results);
     return results
 }
