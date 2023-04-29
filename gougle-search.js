@@ -1,4 +1,4 @@
-function queryServers(serverName, q) {
+async function queryServers(serverName, q) {
     const url = serverName + '?q=' + q
     const urlBackup = serverName + '_backup?q=' + q
     return getFastestJSON(url, urlBackup)
