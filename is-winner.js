@@ -12,6 +12,7 @@ async function isWinner(country) {
       const results = countryResults.map((result) => result.score).join(', ')
       return `${country} won the FIFA World Cup in ${years} winning by ${results}`
     } catch (err) {
+        console.log(err)
       return `${country} never was a winner`
     }
 }
