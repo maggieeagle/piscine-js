@@ -17,7 +17,7 @@
 // }
 
 // async function resolveValue(value) {
-    
+
 // }
 
 console.log(all({
@@ -30,17 +30,36 @@ function all(obj) {
     return resolve(obj).then((result) => {
         console.log(result); // { a: 1, b: true }
         return result
-      });
-  }
+    });
+}
 
 async function resolve(obj) {
     const promises = Object.values(obj);
     const keys = Object.keys(obj);
-    return Promise.all(promises).then((resolvedValues) => {
-      const result = {};
-      for (let i = 0; i < keys.length; i++) {
-        result[keys[i]] = resolvedValues[i];
-      }
-      return result;
+    const result = {};
+    let resolvedCount = 0;
+    return new Promise((resolve, reject) => {
+      keys.forEach((key, index) => {
+        const value = promises[index];
+        if (value instanceof Promise) {
+          value
+            .then((resolvedValue) => {
+              result[key] = resolvedValue;
+              resolvedCount++;
+              if (resolvedCount === promises.length) {
+                resolve(result);
+              }
+            })
+            .catch((error) => {
+              reject(error);
+            });
+        } else {
+          result[key] = value;
+          resolvedCount++;
+          if (resolvedCount === promises.length) {
+            resolve(result);
+          }
+        }
+      });
     });
 }
