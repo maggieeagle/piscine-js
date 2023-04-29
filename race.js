@@ -28,8 +28,9 @@ async function some(promises, count) {
     console.log(orderedResults);
     return orderedResults;
 }
-const promise = new Promise((resolve, reject) => {
-    // This promise will never resolve because the resolve function is never called
-});
 
-console.log(some([promise, Promise.resolve(2), Promise.resolve(5), promise], 3))
+// const promise = new Promise((resolve, reject) => {
+//     // This promise will never resolve because the resolve function is never called
+// });
+
+// console.log(some([promise, Promise.resolve(2), Promise.resolve(5), promise], 3))
