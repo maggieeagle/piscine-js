@@ -1,15 +1,22 @@
 async function queryServers(serverName, q) {
     const url = '/' + serverName + '?q=' + q
     const urlBackup = '/' + serverName + '_backup?q=' + q
-    return Promise.all([getJSON(url), getJSON(urlBackup)])
-    .then(([data, dataBackup]) => {
-        console.log(data.response_time, dataBackup.response_time)
-      if (data.response_time <= dataBackup.response_time) {
-        return data;
-      } else {
-        return dataBackup;
-      }
-    });
+    return getFastestJSON(url, urlBackup)
+}
+
+function getFastestJSON(url, urlBackup) {
+    const startTime1 = performance.now();
+    const promise1 = getJSON(url);
+    const endTime1 = performance.now();
+
+    const startTime2 = performance.now();
+    const promise2 = getJSON(urlBackup);
+    const endTime2 = performance.now();
+
+    const time1 = endTime1 - startTime1;
+    const time2 = endTime2 - startTime2;
+    console.log(time1, time2)
+    return time1 < time2 ? promise1 : promise2;
 }
 
 async function gougleSearch(q) {
