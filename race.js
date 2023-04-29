@@ -12,31 +12,24 @@ async function some(promises, count) {
     let results = []
     let indexes = promises.map((_, i) => i);
 
-while (results.length < count && indexes.length > 0) {
-    let index;
-    try {
-        index = await Promise.race(indexes.map((i) => promises[i].then(() => i)));
-        results[index] = await promises[index];
-    } catch (err) {
-        console.error(err);
-        results[index] = undefined;
+    while (results.filter((r) => r !== null).length < count && indexes.length > 0) {
+        let index;
+        try {
+            index = await Promise.race(indexes.map((i) => promises[i].then(() => i)));
+            results[index] = await promises[index];
+        } catch (err) {
+            console.error(err);
+            results[index] = null;
+        }
+        indexes.splice(indexes.indexOf(index), 1);
     }
-    indexes.splice(indexes.indexOf(index), 1);
-}
 
-let orderedResults = [];
-for (let i = 0; i < promises.length; i++) {
-    if (results[i] !== undefined) {
-        orderedResults.push(results[i]);
-    }
+    let orderedResults = results.filter((r) => r !== null);
+    console.log(orderedResults);
+    return orderedResults;
 }
-
-console.log(orderedResults);
-return orderedResults;
-}
-
 const promise = new Promise((resolve, reject) => {
     // This promise will never resolve because the resolve function is never called
 });
 
-console.log(some([Promise.resolve(2), Promise.resolve(5), promise], 2))
+console.log(some([promise, Promise.resolve(2), Promise.resolve(5), promise], 3))
