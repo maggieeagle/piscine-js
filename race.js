@@ -19,10 +19,15 @@ async function some(promises, count) {
     // return all.slice(0, count)
     let results = []
 
-    while (results.length < count) {
-        let result = await Promise.race(promises);
+    let settled = 0;
+
+    for (let i = 0; i < promises.length; i++) {
+      let result = await Promise.race([promises[i], new Promise((resolve) => setTimeout(resolve, 0))]);
+      if (result !== undefined) {
         results.push(result);
-        promises = promises.filter((p) => p !== result);
+        settled++;
+        if (settled >= count) break;
+      }
     }
     return results
 }
