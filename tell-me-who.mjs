@@ -8,5 +8,5 @@ for (const file of files) {
 }
 guests.sort()
 for (const guest of guests) {
-    console.log(guests.indexOf(guest) + '.' + guest.slice(1, guest.length))
+    console.log(guests.indexOf(guest)+1 + '. ' + guest)
 }
