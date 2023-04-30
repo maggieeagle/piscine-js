@@ -7,17 +7,22 @@ const server = http.createServer(async function (req, res) {
     if (req.method === 'POST') {
         let name = req.url.slice(1, req.url.length)
 
-        let requestBody = '';
-        req.on('data', (chunk) => {
-            requestBody += chunk;
-        });
+        try {
+            let requestBody = '';
+            req.on('data', (chunk) => {
+                requestBody += chunk;
+            });
+        } catch (e) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            body = { error: "server failed" }
+            res.end(JSON.stringify(body));
+        }
 
         req.on('end', () => {
             try {
-                    writeToFile(requestBody, './guests/' + name + '.json')
-                    res.writeHead(201, { 'Content-Type': 'application/json' });
-                    res.end(requestBody);
-
+                writeToFile(requestBody, './guests/' + name + '.json')
+                res.writeHead(201, { 'Content-Type': 'application/json' });
+                res.end(requestBody);
             } catch (err) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
                 body = { error: "server failed" }
