@@ -12,8 +12,9 @@ server.on('request', async function(req, res) {
             await readFileAsync(name + '.json')
             res.end(body);
         } catch (err) {
+            console.log(err)
             res.writeHead(500, { 'Content-Type': 'application/json' });
-            if(body == undefined)  body = { error: "guest not found" }
+            if(err.code = 'ENOENT')  body = { error: "guest not found" }
             else body = { error: "server failed" }
             res.end(JSON.stringify(body));
         }
