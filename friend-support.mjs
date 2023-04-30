@@ -21,8 +21,9 @@ server.on('request', async function (req, res) {
                 body = { error: "guest not found" }
             }
             else {
-                res.writeHead(500, { 'Content-Type': 'application/json' });
-                body = { error: "server failed" }
+                // res.writeHead(500, { 'Content-Type': 'application/json' });
+                // body = { error: "server failed" }
+                throw new Error("Internal server error");
             }
             res.end(JSON.stringify(body));
         }
