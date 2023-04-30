@@ -35,6 +35,14 @@ server.on('request', async function (req, res) {
     }
 });
 
+server.on('error', (err) => {
+    console.error('Server error:', err);
+    // Send a 500 Internal Server Error response to clients
+    res.writeHead(500, {'Content-Type': 'text/plain'});
+    body = { error: "server failed" }
+    res.end(JSON.stringify(body));
+  });
+
 server.listen(5000, () => console.log(`The server is listening on port 5000`));
 
 async function readFileAsync(file) {
