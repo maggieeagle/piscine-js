@@ -7,6 +7,6 @@ words = words.map((word) => {
 const content = words.flat().join('').replaceAll('.', ' ')
 
 import { writeFile } from 'fs/promises';
-writeFile('./test.txt', content, err => {
+writeFile('verydisco-forever.txt', content, err => {
   if (err) console.log(err)
 });
