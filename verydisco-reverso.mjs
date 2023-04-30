@@ -1,5 +1,7 @@
+const filename = process.args[2]
+
 import { readFile } from 'fs';
-readFile('verydisco.txt', 'utf8', function(err, words){
+readFile(filename, 'utf8', function(err, words){
     words = words.replaceAll(' ', ' . ').split(' ')
     words = words.map((word) => {
         let middle = Math.floor(word.length / 2)
