@@ -34,7 +34,7 @@ const server = http.createServer(async function (req, res) {
     }
 });
 
-server.on('close', function() {
+server.on('kill', function() {
     if (server.listening === false) {
         res.writeHead(500, { 'Content-Type': 'application/json' });
         body = { error: "server failed" };
