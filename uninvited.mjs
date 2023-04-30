@@ -6,32 +6,32 @@ let body
 const server = http.createServer(async function (req, res) {
     if (req.method === 'POST') {
         let name = req.url.slice(1, req.url.length)
-        
+
         let requestBody = '';
         req.on('data', (chunk) => {
-          requestBody += chunk;
+            requestBody += chunk;
         });
 
         req.on('end', () => {
             try {
                 try {
                     JSON.parse(requestBody);
+                    writeToFile(requestBody, './guests/' + name + '.json')
+                    res.writeHead(201, { 'Content-Type': 'application/json' });
+                    res.end(requestBody);
                 } catch (e) {
                     res.writeHead(500, { 'Content-Type': 'application/json' });
                     body = { error: "server failed" }
                     res.end(JSON.stringify(body));
-                    return
                 }
-                writeToFile(requestBody, './guests/' + name + '.json')
-                res.writeHead(201, { 'Content-Type': 'application/json' });
-                res.end(requestBody);
+
             } catch (err) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
                 body = { error: "server failed" }
                 res.end(JSON.stringify(body));
             }
-          });
-    
+        });
+
     }
 });
 
