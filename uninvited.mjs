@@ -39,11 +39,3 @@ const server = http.createServer((req, res) => {
 server.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
-
-// Handle server errors
-process.on('uncaughtException', () => {
-    server.close(() => {
-        console.log('Server closed');
-    });
-    console.log('Server failed');
-});
