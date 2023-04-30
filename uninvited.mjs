@@ -29,8 +29,11 @@ const server = http.createServer(async function (req, res) {
 
 server.listen(5000, () => console.log(`The server is listening on port 5000`));
 
-function writeToFile(content, filename) {
-    writeFile(filename, content, err => {
-        if (err) console.log(err)
-    });
+async function writeToFile(content, filename) {
+    try {
+        await writeFile(filename, content);
+      } catch (err) {
+        console.log(err);
+        throw err;
+      }
 }
