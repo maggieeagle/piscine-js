@@ -41,7 +41,7 @@ const server = http.createServer(async function (req, res) {
 server.listen(5000, () => console.log(`The server is listening on port 5000`));
 
 function canWrite(path, callback) {
-    fs.access(path, fs.W_OK, function (err) {
+    fs.access(path, fs.constants.W_OK, function (err) {
         callback(null, !err);
     });
 }
