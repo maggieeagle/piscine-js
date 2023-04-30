@@ -12,9 +12,9 @@ const server = http.createServer(async function (req, res) {
             requestBody += chunk;
         });
 
-        req.on('end', () => {
+        req.on('end', async function() {
             try {
-                writeToFile(requestBody, './guests/' + name + '.json')
+                await writeToFile(requestBody, './guests/' + name + '.json')
                 res.writeHead(201, { 'Content-Type': 'application/json' });
                 res.end(requestBody);
             } catch (err) {
