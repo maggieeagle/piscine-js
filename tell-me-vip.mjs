@@ -14,7 +14,7 @@ let list = ''
 for (const guest of guests) {
     list += guests.indexOf(guest) + 1 + '. ' + guest + '\n'
 }
-writeToFile(list)
+writeToFile(list.slice(0, -1))
 
 function writeToFile(content) {
     writeFile('vip.txt', content, err => {
