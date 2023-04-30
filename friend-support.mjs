@@ -50,7 +50,7 @@ const server = http.createServer(async function (req, res) {
 // });
 
 server.listen(5000, () => console.log(`The server is listening on port 5000`));
-
+server.kill()
 async function readFileAsync(file) {
     return new Promise((resolve, reject) => {
         readFile(file, 'utf8', (err, data) => {
