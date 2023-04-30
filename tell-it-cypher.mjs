@@ -1,6 +1,6 @@
 const file = process.argv[2]
 const keyword = process.argv[3]
-const name = process.argv[4]==undefined?file:process.argv[4]
+const newName = process.argv[4]==undefined?(keyword=='encode'?'cypher.txt':'clear.txt'):process.argv[4]
 
 import { Buffer } from 'node:buffer';
 import { readFile } from 'fs';
@@ -11,12 +11,12 @@ switch (keyword) {
     case 'encode':
         await readFileAsync(file)
         const buf1 = Buffer.from(fileData)
-        writeToFile(buf1.toString('base64'), 'cypher.txt')
+        writeToFile(buf1.toString('base64'), newName)
         break;
     case 'decode':
         await readFileAsync(file)
         const buf2 = new Buffer.from(fileData, 'base64')
-        writeToFile(buf2.toString(), 'clear.txt')
+        writeToFile(buf2.toString(), newName)
         break;
     default:
         console.log('no keyword')
