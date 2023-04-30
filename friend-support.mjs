@@ -12,8 +12,10 @@ server.on('request', async function (req, res) {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             await readFileAsync('./guests/' + name + '.json')
             res.end(body);
+            nonExistentFunction();
         } catch (err) {
             const files = await readdir('./guests/');
+            console.log(files)
             if (files.indexOf(name) == -1) {
                 res.writeHead(404, { 'Content-Type': 'application/json' });
                 body = { error: "guest not found" }
