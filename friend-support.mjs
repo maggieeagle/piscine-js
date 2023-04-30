@@ -2,10 +2,9 @@ import * as http from 'node:http'
 import { readFile } from 'fs';
 import { readdir } from 'node:fs/promises';
 
-const server = http.createServer();
 let body
 
-server.on('request', async function (req, res) {
+const server = http.createServer(async function (req, res) {
     if (req.method === 'GET') {
         let name = req.url.slice(1, req.url.length)
         try {
@@ -15,7 +14,7 @@ server.on('request', async function (req, res) {
             nonExistentFunction();
         } catch (err) {
             const files = await readdir('./guests/');
-            console.log(files)
+            // console.log(files)
             if (files.indexOf(name) == -1) {
                 res.writeHead(404, { 'Content-Type': 'application/json' });
                 body = { error: "guest not found" }
