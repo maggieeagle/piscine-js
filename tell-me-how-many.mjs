@@ -4,4 +4,4 @@ import { readdir } from 'node:fs/promises';
 const files = await readdir(path);
 let count = 0
 for (const file of files) count++
-console.log(count-1)
+console.log(count)
