@@ -1,23 +1,22 @@
 import * as http from 'node:http'
 import { writeFile } from 'fs/promises';
-import { access, constants } from 'node:fs';
+import * as fs from 'node:fs';
 
 let body
 
 const server = http.createServer(async function (req, res) {
     if (req.method === 'POST') {
         let name = req.url.slice(1, req.url.length)
+        let filename = './guests/' + name + '.json'
 
         let requestBody = '';
         req.on('data', (chunk) => {
             requestBody += chunk;
         });
-
         req.on('end', () => { 
             canWrite(filename, function (err, isWritable) {
             console.log(isWritable); // true or false
             if (isWritable){
-            let filename = './guests/' + name + '.json'
             try {
                 writeToFile(requestBody, filename)
                 res.writeHead(201, { 'Content-Type': 'application/json' });
