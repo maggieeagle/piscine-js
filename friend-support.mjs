@@ -7,6 +7,11 @@ let body
 const server = http.createServer(async function (req, res) {
     if (req.method === 'GET') {
         let name = req.url.slice(1, req.url.length)
+        if (server.listening === false) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            body = { error: "server failed" };
+            res.end(JSON.stringify(body));
+        }
         try {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             await readFileAsync('./guests/' + name + '.json')
@@ -34,13 +39,13 @@ const server = http.createServer(async function (req, res) {
     }
 });
 
-server.on('kill', function() {
-    if (server.listening === false) {
-        res.writeHead(500, { 'Content-Type': 'application/json' });
-        body = { error: "server failed" };
-        res.end(JSON.stringify(body));
-    }
-});
+// server.on('kill', function() {
+//     if (server.listening === false) {
+//         res.writeHead(500, { 'Content-Type': 'application/json' });
+//         body = { error: "server failed" };
+//         res.end(JSON.stringify(body));
+//     }
+// });
 
 server.listen(5000, () => console.log(`The server is listening on port 5000`));
 
