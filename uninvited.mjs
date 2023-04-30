@@ -12,7 +12,7 @@ const server = http.createServer(async function (req, res) {
             requestBody += chunk;
         });
 
-        req.on('end', async function() {
+        req.on('end', async function () {
             try {
                 await writeToFile(requestBody, './guests/' + name + '.json')
                 res.writeHead(201, { 'Content-Type': 'application/json' });
@@ -22,6 +22,13 @@ const server = http.createServer(async function (req, res) {
                 body = { error: "server failed" }
                 res.end(JSON.stringify(body));
             }
+        });
+
+        req.setTimeout(5000, () => {
+            req.abort();
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            body = { error: "server failed" }
+            res.end(JSON.stringify(body));
         });
 
     }
