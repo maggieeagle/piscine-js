@@ -40,7 +40,7 @@ const server = http.createServer((req, res) => {
                     } else {
                         // If the file was successfully written
                         res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify(body));
+                        res.end(body);
                     }
                 });
             } catch (error) {
