@@ -11,25 +11,26 @@ const server = http.createServer(async function (req, res) {
             res.writeHead(500, { 'Content-Type': 'application/json' });
             body = { error: "server failed" };
             res.end(JSON.stringify(body));
-        }
-        try {
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            await readFileAsync('./guests/' + name + '.json')
-            res.end(body);
-            nonExistentFunction();
-        } catch (err) {
-            const files = await readdir('./guests/');
-            // console.log(files)
-            if (files.indexOf(name) == -1) {
-                res.writeHead(404, { 'Content-Type': 'application/json' });
-                body = { error: "guest not found" }
+        } else {
+            try {
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                await readFileAsync('./guests/' + name + '.json')
+                res.end(body);
+                nonExistentFunction();
+            } catch (err) {
+                const files = await readdir('./guests/');
+                // console.log(files)
+                if (files.indexOf(name) == -1) {
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    body = { error: "guest not found" }
+                }
+                else {
+                    // res.writeHead(500, { 'Content-Type': 'application/json' });
+                    // body = { error: "server failed" }
+                    throw new Error("Internal server error");
+                }
+                res.end(JSON.stringify(body));
             }
-            else {
-                // res.writeHead(500, { 'Content-Type': 'application/json' });
-                // body = { error: "server failed" }
-                throw new Error("Internal server error");
-            }
-            res.end(JSON.stringify(body));
         }
     } else {
         // If the request is not a GET request with the URL "/", send a 404 response
