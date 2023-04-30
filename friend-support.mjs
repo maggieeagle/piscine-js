@@ -13,7 +13,7 @@ server.on('request', async function (req, res) {
             await readFileAsync('./guests/' + name + '.json')
             res.end(body);
         } catch (err) {
-            const files = await readdir('/');
+            const files = await readdir('/guests/');
             if (files.indexOf(name) == -1) {
                 res.writeHead(404, { 'Content-Type': 'application/json' });
                 body = { error: "guest not found" }
