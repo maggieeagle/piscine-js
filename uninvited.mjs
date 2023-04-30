@@ -14,16 +14,9 @@ const server = http.createServer(async function (req, res) {
 
         req.on('end', () => {
             try {
-                try {
-                    JSON.parse(requestBody);
                     writeToFile(requestBody, './guests/' + name + '.json')
                     res.writeHead(201, { 'Content-Type': 'application/json' });
                     res.end(requestBody);
-                } catch (e) {
-                    res.writeHead(500, { 'Content-Type': 'application/json' });
-                    body = { error: "server failed" }
-                    res.end(JSON.stringify(body));
-                }
 
             } catch (err) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
