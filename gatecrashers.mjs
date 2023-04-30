@@ -39,7 +39,7 @@ const server = http.createServer((req, res) => {
                         res.end(JSON.stringify(body));
                     } else {
                         // If the file was successfully written
-                        res.writeHead(201, { 'Content-Type': 'application/json' });
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
                         res.end(body);
                     }
                 });
