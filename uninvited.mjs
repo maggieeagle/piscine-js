@@ -12,11 +12,11 @@ const server = http.createServer(async function (req, res) {
             requestBody += chunk;
         });
 
-        req.on('end', async function () {
+        req.on('end', () => {
             try {
-                await writeToFile(requestBody, './guests/' + name + '.json')
-                res.writeHead(201, { 'Content-Type': 'application/json' });
-                res.end(requestBody);
+                    await writeToFile(requestBody, './guests/' + name + '.json')
+                    res.writeHead(201, { 'Content-Type': 'application/json' });
+                    res.end(requestBody);
             } catch (err) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
                 body = { error: "server failed" }
@@ -24,27 +24,13 @@ const server = http.createServer(async function (req, res) {
             }
         });
 
-        req.setTimeout(5000, () => {
-            req.abort();
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            body = { error: "server failed" }
-            res.end(JSON.stringify(body));
-        });
-
     }
 });
 
 server.listen(5000, () => console.log(`The server is listening on port 5000`));
 
-
-async function writeToFile(content, filename) {
-    return new Promise((resolve, reject) => {
-        writeFile(filename, content, (err) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
+function writeToFile(content, filename) {
+    writeFile(filename, content, err => {
+        if (err) console.log(err)
     });
 }
