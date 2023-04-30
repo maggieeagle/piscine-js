@@ -12,11 +12,12 @@ const server = http.createServer(async function (req, res) {
             if (files.indexOf(name + '.json') == -1) {
                 res.writeHead(404, { 'Content-Type': 'application/json' });
                 body = { error: "guest not found" }
+                res.end(JSON.stringify(body));
             } else {
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 await readFileAsync('./guests/' + name + '.json')
+                res.end(body);
             }
-            res.end(JSON.stringify(body));
         } catch (err) {
             res.writeHead(500, { 'Content-Type': 'application/json' });
             body = { error: "server failed" }
