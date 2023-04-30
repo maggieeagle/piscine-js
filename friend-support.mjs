@@ -14,7 +14,7 @@ const server = http.createServer(async function (req, res) {
             nonExistentFunction();
         } catch (err) {
             console.log('listening', server.listening)
-            if (server.listening === false) {
+            if (!server.listening) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
                 body = { error: "server failed" };
                 res.end(JSON.stringify(body));
