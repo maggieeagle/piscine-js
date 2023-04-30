@@ -18,8 +18,11 @@ const server = http.createServer(async function (req, res) {
             console.log(isWritable); // true or false
             if (isWritable){
             try {
-                JSON.parse(requestBody)
                 writeToFile(requestBody, filename)
+                try {JSON.parse(requestBody)}
+                catch(e) {
+                    requestBody = '{"answer" :"' + requestBody + '"}'
+                }
                 res.writeHead(201, { 'Content-Type': 'application/json' });
                 res.end(requestBody);
             } catch (err) {
