@@ -41,8 +41,14 @@ const server = http.createServer(async function (req, res) {
 server.listen(5000, () => console.log(`The server is listening on port 5000`));
 
 function canWrite(path, callback) {
-    fs.access(path, fs.constants.W_OK, function (err) {
-        callback(null, !err);
+    fs.access(path, fs.constants.F_OK, function (err) {
+        if (err) {
+            callback(null, true); // file doesn't exist, return true
+          } else {
+            fs.access(path, fs.constants.W_OK, (err) => {
+              callback(null, !err); // file exists and is writable
+            });
+          }
     });
 }
 
