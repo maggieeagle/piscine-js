@@ -1,4 +1,4 @@
-const filename = process.args[2]
+const filename = process.argv[2]
 
 import { readFile } from 'fs';
 readFile(filename, 'utf8', function(err, words){
