@@ -9,7 +9,7 @@ const server = http.createServer(async function (req, res) {
         let name = req.url.slice(1, req.url.length)
         try {
             const files = await readdir('./guests/');
-            if (files.indexOf(name) == -1) {
+            if (files.indexOf(name + '.json') == -1) {
                 res.writeHead(404, { 'Content-Type': 'application/json' });
                 body = { error: "guest not found" }
             } else {
