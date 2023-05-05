@@ -14,7 +14,8 @@ const server = http.createServer((req, res) => {
             // If the request does not contain an authorization header
             res.setHeader('Body', { error: 'Unauthorized' });
             res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
-            res.end(JSON.stringify({ error: 'Unauthorized' }));
+            // res.end(JSON.stringify({ error: 'Unauthorized' }));
+            res.end()
             return;
         }
         const [username, password] = Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
@@ -22,7 +23,8 @@ const server = http.createServer((req, res) => {
             // If the request contains an invalid username or password
             res.setHeader('Body', { error: 'Unauthorized' });
             res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
-            res.end(JSON.stringify({ error: 'Unauthorized' }));
+            // res.end(JSON.stringify({ error: 'Unauthorized' }));
+            res.end()
             return;
         }
         let body = '';
@@ -39,19 +41,22 @@ const server = http.createServer((req, res) => {
                         body = { error: "server failed" }
                         res.setHeader('Body', JSON.stringify(body));
                         res.writeHead(500, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify(body));
+                        // res.end(JSON.stringify(body));
+                        res.end()
                     } else {
                         // If the file was successfully written
                         res.setHeader('Body', JSON.stringify(body));
                         res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify(JSON.parse(body)));
+                        // res.end(JSON.stringify(JSON.parse(body)));
+                        res.end()
                     }
                 });
             } catch (error) {
                 body = { error: "server failed" }
                 res.writeHead(500, { 'Content-Type': 'application/json' })
                 res.setHeader('Body', JSON.stringify(body));
-                res.end(JSON.stringify(body));
+                // res.end(JSON.stringify(body));
+                res.end()
             }
         });
     }
