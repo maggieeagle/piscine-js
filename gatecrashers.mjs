@@ -46,7 +46,7 @@ const server = http.createServer((req, res) => {
                     } else {
                         // If the file was successfully written
                         res.setHeader('Content-Type', 'application/json');
-                        res.setHeader('Body', JSON.stringify(body));
+                        res.setHeader('Body', body);
                         res.writeHead(200, { 'Content-Type': 'application/json' });
                         // res.end(JSON.stringify(JSON.parse(body)));
                         res.end('')
