@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
             res.setHeader('Body', { error: 'Unauthorized' });
             res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
             // res.end(JSON.stringify({ error: 'Unauthorized' }));
-            res.end()
+            res.end('')
             return;
         }
         const [username, password] = Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
             res.setHeader('Body', { error: 'Unauthorized' });
             res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
             // res.end(JSON.stringify({ error: 'Unauthorized' }));
-            res.end()
+            res.end('')
             return;
         }
         let body = '';
@@ -42,13 +42,13 @@ const server = http.createServer((req, res) => {
                         res.setHeader('Body', JSON.stringify(body));
                         res.writeHead(500, { 'Content-Type': 'application/json' });
                         // res.end(JSON.stringify(body));
-                        res.end()
+                        res.end('')
                     } else {
                         // If the file was successfully written
                         res.setHeader('Body', JSON.stringify(body));
                         res.writeHead(200, { 'Content-Type': 'application/json' });
                         // res.end(JSON.stringify(JSON.parse(body)));
-                        res.end()
+                        res.end('')
                     }
                 });
             } catch (error) {
@@ -56,7 +56,7 @@ const server = http.createServer((req, res) => {
                 res.writeHead(500, { 'Content-Type': 'application/json' })
                 res.setHeader('Body', JSON.stringify(body));
                 // res.end(JSON.stringify(body));
-                res.end()
+                res.end('')
             }
         });
     }
