@@ -10,19 +10,19 @@ const secretPassword = 'abracadabra';
 const server = http.createServer((req, res) => {
     if (req.method === 'POST') {
         const auth = req.headers['authorization'];
-    if (!auth) {
-      // If the request does not contain an authorization header
-      res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
-      res.end(JSON.stringify({ error: 'Unauthorized' }));
-      return;
-    }
-    const [username, password] = Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
-    if (!authorizedUsers.includes(username) || password !== secretPassword) {
-      // If the request contains an invalid username or password
-      res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
-      res.end(JSON.stringify({ error: 'Unauthorized' }));
-      return;
-    }
+        if (!auth) {
+            // If the request does not contain an authorization header
+            res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
+            res.end(JSON.stringify({ error: 'Unauthorized' }));
+            return;
+        }
+        const [username, password] = Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
+        if (!authorizedUsers.includes(username) || password !== secretPassword) {
+            // If the request contains an invalid username or password
+            res.writeHead(401, { 'Content-Type': 'application/json', 'WWW-Authenticate': 'Basic realm="Authentication required"' });
+            res.end(JSON.stringify({ error: 'Unauthorized' }));
+            return;
+        }
         let body = '';
         req.on('data', chunk => {
             body += chunk.toString();
@@ -40,6 +40,7 @@ const server = http.createServer((req, res) => {
                     } else {
                         // If the file was successfully written
                         res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.setHeader('body', JSON.stringify(JSON.parse(body)));
                         res.end(JSON.stringify(JSON.parse(body)));
                     }
                 });
