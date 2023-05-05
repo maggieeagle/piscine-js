@@ -3,8 +3,8 @@ import * as fs from 'node:fs';
 
 const port = 5000;
 
-// const authorizedUsers = ['Caleb_Squires', 'Tyrique_Dalton', 'Rahima_Young'];
-// const secretPassword = 'abracadabra';
+const authorizedUsers = ['Caleb_Squires', 'Tyrique_Dalton', 'Rahima_Young'];
+const secretPassword = 'abracadabra';
 
 // Create HTTP server
 const server = http.createServer((req, res) => {
@@ -41,7 +41,7 @@ const server = http.createServer((req, res) => {
                         // If the file was successfully written
                         res.setHeader('Body', JSON.stringify(JSON.parse(body)));
                         res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify(JSON.parse(body)));
+                        // res.end(JSON.stringify(JSON.parse(body)));
                     }
                 });
             } catch (error) {
