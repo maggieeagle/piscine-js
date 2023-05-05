@@ -41,15 +41,15 @@ const server = http.createServer((req, res) => {
                         body = { error: "server failed" }
                         res.setHeader('Body', JSON.stringify(body));
                         res.writeHead(500, { 'Content-Type': 'application/json' });
-                        // res.end(JSON.stringify(body));
-                        res.end('')
+                        res.end(JSON.stringify(body));
+                        // res.end('')
                     } else {
                         // If the file was successfully written
                         res.setHeader('Content-Type', 'application/json');
                         res.setHeader('Body', body);
                         res.writeHead(200, { 'Content-Type': 'application/json' });
-                        // res.end(JSON.stringify(JSON.parse(body)));
-                        res.end('')
+                        res.end(JSON.stringify(JSON.parse(body)));
+                        // res.end('')
                     }
                 });
             } catch (error) {
