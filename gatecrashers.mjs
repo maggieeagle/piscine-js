@@ -41,12 +41,12 @@ const server = http.createServer((req, res) => {
                         body = { error: "server failed" }
                         res.setHeader('Body', JSON.stringify(body));
                         res.writeHead(500, { 'Content-Type': 'application/json' });
-                        res.end(body);
+                        res.end(JSON.stringify(body));
                         // res.end('')
                     } else {
                         // If the file was successfully written
                         res.setHeader('Content-Type', 'application/json');
-                        res.setHeader('Body', body);
+                        res.setHeader('Body', "'" + body + "'");
                         res.writeHead(200, { 'Content-Type': 'application/json' });
                         res.end(body);
                         // res.end('')
@@ -55,9 +55,9 @@ const server = http.createServer((req, res) => {
             } catch (error) {
                 body = { error: "server failed" }
                 res.writeHead(500, { 'Content-Type': 'application/json' })
-                res.setHeader('Body', body);
-                // res.end(JSON.stringify(body));
-                res.end('')
+                res.setHeader('Body', JSON.stringify(body));
+                res.end(JSON.stringify(body));
+                // res.end('')
             }
         });
     }
