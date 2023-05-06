@@ -172,7 +172,9 @@ const server = http.createServer((req, res) => {
             res.end(JSON.stringify({ error: 'server failed' }));
           } else {
             // If the file was successfully written
+            
             res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Body', JSON.stringify(body));
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(body));
           }
