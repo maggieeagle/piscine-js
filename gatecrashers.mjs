@@ -150,7 +150,7 @@ const server = http.createServer((req, res) => {
       return;
     }
     const [username, password] = Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
-    if (!authorizedUsers.includes(username) || password !== secretPassword) {
+    if (!authorizedUsers.includes(username) || password != secretPassword) {
       // If the request contains an invalid username or password
       res.setHeader('WWW-Authenticate', 'Basic realm="Authentication required"');
       res.writeHead(401, { 'Content-Type': 'application/json' });
