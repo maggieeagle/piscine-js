@@ -168,6 +168,7 @@ const server = http.createServer((req, res) => {
         fs.writeFile(filename, body, (err) => {
           if (err) {
             // If there was an error writing the file
+            res.setHeader('Body', JSON.stringify({ error: 'server failed' }));
             res.writeHead(500, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ error: 'server failed' }));
           } else {
@@ -180,6 +181,7 @@ const server = http.createServer((req, res) => {
           }
         });
       } catch (error) {
+        res.setHeader('Body', JSON.stringify({ error: 'server failed' }));
         res.writeHead(500, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'server failed' }));
       }
