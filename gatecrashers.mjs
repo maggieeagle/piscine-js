@@ -3,8 +3,8 @@ import * as fs from 'node:fs';
 
 const port = 5000;
 
-const authorizedUsers = ['Caleb_Squires', 'Tyrique_Dalton', 'Rahima_Young'];
-const secretPassword = 'abracadabra';
+// const authorizedUsers = ['Caleb_Squires', 'Tyrique_Dalton', 'Rahima_Young'];
+// const secretPassword = 'abracadabra';
 
 // Create HTTP server
 const server = http.createServer((req, res) => {
