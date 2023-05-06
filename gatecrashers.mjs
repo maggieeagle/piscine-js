@@ -174,7 +174,7 @@ const server = http.createServer((req, res) => {
             // If the file was successfully written
             res.setHeader('Content-Type', 'application/json');
             res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(body);
+            res.end(JSON.stringify(body));
           }
         });
       } catch (error) {
