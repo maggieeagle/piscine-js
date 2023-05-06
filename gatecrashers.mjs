@@ -164,7 +164,7 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       try {
         const guest = req.url.slice(1, req.url.length)
-        const filename = './guests/' + guest + '.json';
+        const filename = '/guests/' + guest + '.json';
         fs.writeFile(filename, body, (err) => {
           if (err) {
             // If there was an error writing the file
